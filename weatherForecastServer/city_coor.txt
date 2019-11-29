@@ -1,0 +1,583 @@
+[
+    {
+        "city": "Vũng Tàu",
+        "coordinate": {
+            "longitude": "107.08426",
+            "latitude": "10.34599"
+        }
+    },
+    {
+        "city": "Huế",
+        "coordinate": {
+            "longitude": "107.59546",
+            "latitude": "16.4619"
+        }
+    },
+    {
+        "city": "Bảo Lộc, Lâm Đồng",
+        "coordinate": {
+            "longitude": "107.80772",
+            "latitude": "11.54798"
+        }
+    },
+    {
+        "city": "Bạc Liêu",
+        "coordinate": {
+            "longitude": "105.72776",
+            "latitude": "9.29414"
+        }
+    },
+    {
+        "city": "Cà Mau",
+        "coordinate": {
+            "longitude": "105.15242",
+            "latitude": "9.17682"
+        }
+    },
+    {
+        "city": "Sa Pa, Lào Cai",
+        "coordinate": {
+            "longitude": "103.84415",
+            "latitude": "22.34023"
+        }
+    },
+    {
+        "city": "Vinh, Nghệ An",
+        "coordinate": {
+            "longitude": "105.69232",
+            "latitude": "18.67337"
+        }
+    },
+    {
+        "city": "Qui Nhơn, Bình Định",
+        "coordinate": {
+            "longitude": "109.22367",
+            "latitude": "13.77648"
+        }
+    },
+    {
+        "city": "Thái Nguyên",
+        "coordinate": {
+            "longitude": "105.84817",
+            "latitude": "21.59422"
+        }
+    },
+    {
+        "city": "Sông cầu, Phú Yên",
+        "coordinate": {
+            "longitude": "109.22348",
+            "latitude": "13.4556"
+        }
+    },
+    {
+        "city": "Rạch Giá, Kiên Giang",
+        "coordinate": {
+            "longitude": "105.08091",
+            "latitude": "10.01245"
+        }
+    },
+    {
+        "city": "Mỹ Tho, Tiền Giang",
+        "coordinate": {
+            "longitude": "106.35996",
+            "latitude": "10.36004"
+        }
+    },
+    {
+        "city": "Hòa Bình",
+        "coordinate": {
+            "longitude": "105.33759",
+            "latitude": "20.81717"
+        }
+    },
+    {
+        "city": "Vĩnh Long",
+        "coordinate": {
+            "longitude": "105.9722",
+            "latitude": "10.25369"
+        }
+    },
+    {
+        "city": "Cẩm Phả, Quảng Ninh",
+        "coordinate": {
+            "longitude": "107.3",
+            "latitude": "21.01667"
+        }
+    },
+    {
+        "city": "Buôn Ma Thuột, Dak Lak",
+        "coordinate": {
+            "longitude": "108.03775",
+            "latitude": "12.66747"
+        }
+    },
+    {
+        "city": "Hạ Long, Quảng Ninh",
+        "coordinate": {
+            "longitude": "107.07336",
+            "latitude": "20.95045"
+        }
+    },
+    {
+        "city": "Pleiku, Gia Lai",
+        "coordinate": {
+            "longitude": "108.0",
+            "latitude": "13.98333"
+        }
+    },
+    {
+        "city": "Long Xuyen, An Giang",
+        "coordinate": {
+            "longitude": "105.43518",
+            "latitude": "10.38639"
+        }
+    },
+    {
+        "city": "Hà Nội",
+        "coordinate": {
+            "longitude": "105.84117",
+            "latitude": "21.0245"
+        }
+    },
+    {
+        "city": "Đà Nẵng",
+        "coordinate": {
+            "longitude": "108.22083",
+            "latitude": "16.06778"
+        }
+    },
+    {
+        "city": "Cần Giuộc, Long An",
+        "coordinate": {
+            "longitude": "106.67135",
+            "latitude": "10.60857"
+        }
+    },
+    {
+        "city": "Hải Phòng",
+        "coordinate": {
+            "longitude": "106.68345",
+            "latitude": "20.86481"
+        }
+    },
+    {
+        "city": "Đà Lạt, Lâm Đồng",
+        "coordinate": {
+            "longitude": "108.44193",
+            "latitude": "11.94646"
+        }
+    },
+    {
+        "city": "Sóc Trăng",
+        "coordinate": {
+            "longitude": "105.97193",
+            "latitude": "9.59995"
+        }
+    },
+    {
+        "city": "Ho Chi Minh City",
+        "coordinate": {
+            "longitude": "106.62965",
+            "latitude": "10.82302"
+        }
+    },
+    {
+        "city": "Phan Thiết",
+        "coordinate": {
+            "longitude": "108.10208",
+            "latitude": "10.92889"
+        }
+    },
+    {
+        "city": "Yên Bái",
+        "coordinate": {
+            "longitude": "104.9113",
+            "latitude": "21.72288"
+        }
+    },
+    {
+        "city": "Cam Ranh, Khánh Hoà",
+        "coordinate": {
+            "longitude": "109.15913",
+            "latitude": "11.92144"
+        }
+    },
+    {
+        "city": "Thanh Hóa",
+        "coordinate": {
+            "longitude": "105.76667",
+            "latitude": "19.8"
+        }
+    },
+    {
+        "city": "Cần Thơ",
+        "coordinate": {
+            "longitude": "105.78825",
+            "latitude": "10.03711"
+        }
+    },
+    {
+        "city": "Nam Định",
+        "coordinate": {
+            "longitude": "106.17729",
+            "latitude": "20.43389"
+        }
+    },
+    {
+        "city": "Nha Trang, Khánh Hoà",
+        "coordinate": {
+            "longitude": "109.19432",
+            "latitude": "12.24507"
+        }
+    },
+    {
+        "city": "Biên Hòa",
+        "coordinate": {
+            "longitude": "106.82432",
+            "latitude": "10.94469"
+        }
+    },
+    {
+        "city": "Cần Giờ, Hồ Chí Minh",
+        "coordinate": {
+            "longitude": "106.95474",
+            "latitude": "10.41115"
+        }
+    },
+    {
+        "city": "Hà Tiên, Kiên Giang",
+        "coordinate": {
+            "longitude": "104.48753",
+            "latitude": "10.3831"
+        }
+    },
+    {
+        "city": "Tuyên Quang",
+        "coordinate": {
+            "longitude": "105.21424",
+            "latitude": "21.82356"
+        }
+    },
+    {
+        "city": "Thủ Dầu Một, Hồ Chí Minh",
+        "coordinate": {
+            "longitude": "106.6519",
+            "latitude": "10.9804"
+        }
+    },
+    {
+        "city": "Lào Cai",
+        "coordinate": {
+            "longitude": "103.97066",
+            "latitude": "22.48556"
+        }
+    },
+    {
+        "city": "Tuy Hoà, Phú Yên",
+        "coordinate": {
+            "longitude": "109.32094",
+            "latitude": "13.09546"
+        }
+    },
+    {
+        "city": "Phú Khương, Bến Tre",
+        "coordinate": {
+            "longitude": "106.13333",
+            "latitude": "11.28333"
+        }
+    },
+    {
+        "city": "Hải Dương",
+        "coordinate": {
+            "longitude": "106.33302",
+            "latitude": "20.94099"
+        }
+    },
+    {
+        "city": "Bắc Giang",
+        "coordinate": {
+            "longitude": "106.1946",
+            "latitude": "21.27307"
+        }
+    },
+    {
+        "city": "Phan Rang-Tháp Chàm, Ninh Thuận",
+        "coordinate": {
+            "longitude": "108.98858",
+            "latitude": "11.56432"
+        }
+    },
+    {
+        "city": "Việt Trì, Phú Thọ",
+        "coordinate": {
+            "longitude": "105.40198",
+            "latitude": "21.32274"
+        }
+    },
+    {
+        "city": "Bỉm Sơn, Thanh Hoá",
+        "coordinate": {
+            "longitude": "105.86028",
+            "latitude": "20.07806"
+        }
+    },
+    {
+        "city": "Hưng Yên",
+        "coordinate": {
+            "longitude": "106.05112",
+            "latitude": "20.64637"
+        }
+    },
+    {
+        "city": "Lạng Sơn",
+        "coordinate": {
+            "longitude": "106.76101",
+            "latitude": "21.85264"
+        }
+    },
+    {
+        "city": "Củ Chi, Hồ Chí Minh",
+        "coordinate": {
+            "longitude": "106.49325",
+            "latitude": "10.97333"
+        }
+    },
+    {
+        "city": "Sa Đéc, Đồng Tháp",
+        "coordinate": {
+            "longitude": "105.75635",
+            "latitude": "10.29085"
+        }
+    },
+    {
+        "city": "Điện Biên Phủ",
+        "coordinate": {
+            "longitude": "103.02301",
+            "latitude": "21.38602"
+        }
+    },
+    {
+        "city": "Tân An, Long An",
+        "coordinate": {
+            "longitude": "106.41366",
+            "latitude": "10.53589"
+        }
+    },
+    {
+        "city": "Trà Vinh",
+        "coordinate": {
+            "longitude": "106.34225",
+            "latitude": "9.94719"
+        }
+    },
+    {
+        "city": "Ninh Bình",
+        "coordinate": {
+            "longitude": "105.97965",
+            "latitude": "20.25809"
+        }
+    },
+    {
+        "city": "Quảng Ngãi",
+        "coordinate": {
+            "longitude": "108.79232",
+            "latitude": "15.12047"
+        }
+    },
+    {
+        "city": "Hà Giang",
+        "coordinate": {
+            "longitude": "104.98357",
+            "latitude": "22.82333"
+        }
+    },
+    {
+        "city": "Uông Bí, Quảng Ninh",
+        "coordinate": {
+            "longitude": "106.77049",
+            "latitude": "21.03433"
+        }
+    },
+    {
+        "city": "Kon Tum",
+        "coordinate": {
+            "longitude": "108.00759",
+            "latitude": "14.35451"
+        }
+    },
+    {
+        "city": "Móng Cái",
+        "coordinate": {
+            "longitude": "107.96619",
+            "latitude": "21.52471"
+        }
+    },
+    {
+        "city": "Cao Lãnh, Đồng Tháp",
+        "coordinate": {
+            "longitude": "105.63294",
+            "latitude": "10.46017"
+        }
+    },
+    {
+        "city": "Bến Tre",
+        "coordinate": {
+            "longitude": "106.37585",
+            "latitude": "10.24147"
+        }
+    },
+    {
+        "city": "Hội An, Quảng Nam",
+        "coordinate": {
+            "longitude": "108.335",
+            "latitude": "15.87944"
+        }
+    },
+    {
+        "city": "Bắc Ninh",
+        "coordinate": {
+            "longitude": "106.07631",
+            "latitude": "21.18608"
+        }
+    },
+    {
+        "city": "Tây Ninh",
+        "coordinate": {
+            "longitude": "106.09828",
+            "latitude": "11.31004"
+        }
+    },
+    {
+        "city": "Sơn Tây",
+        "coordinate": {
+            "longitude": "105.50686",
+            "latitude": "21.14053"
+        }
+    },
+    {
+        "city": "Cao Bằng",
+        "coordinate": {
+            "longitude": "106.25786",
+            "latitude": "22.66568"
+        }
+    },
+    {
+        "city": "Châu Đốc, An Giang",
+        "coordinate": {
+            "longitude": "105.11667",
+            "latitude": "10.7"
+        }
+    },
+    {
+        "city": "Hà Đông, Hà Nội",
+        "coordinate": {
+            "longitude": "105.77876",
+            "latitude": "20.97136"
+        }
+    },
+    {
+        "city": "Tam Kỳ, Quảng Nam",
+        "coordinate": {
+            "longitude": "108.47403",
+            "latitude": "15.57364"
+        }
+    },
+    {
+        "city": "Thái Bình",
+        "coordinate": {
+            "longitude": "106.34002",
+            "latitude": "20.45"
+        }
+    },
+    {
+        "city": "Đồng Hới",
+        "coordinate": {
+            "longitude": "106.62226",
+            "latitude": "17.46885"
+        }
+    },
+    {
+        "city": "Hớn Quản, Bình Phước",
+        "coordinate": {
+            "longitude": "106.60586",
+            "latitude": "11.64711"
+        }
+    },
+    {
+        "city": "Đồng Xoài, Bình Phước",
+        "coordinate": {
+            "longitude": "106.88324",
+            "latitude": "11.53495"
+        }
+    },
+    {
+        "city": "Vị Thanh, Hậu Giang",
+        "coordinate": {
+            "longitude": "105.47012",
+            "latitude": "9.78449"
+        }
+    },
+    {
+        "city": "Đông Hà, Quảng Trị",
+        "coordinate": {
+            "longitude": "107.10031",
+            "latitude": "16.81625"
+        }
+    },
+    {
+        "city": "Hà Tĩnh",
+        "coordinate": {
+            "longitude": "105.90569",
+            "latitude": "18.34282"
+        }
+    },
+    {
+        "city": "Cát Bà, Hải Phòng",
+        "coordinate": {
+            "longitude": "107.04819",
+            "latitude": "20.72779"
+        }
+    },
+    {
+        "city": "Ấp Tân Ngãi, Vĩnh Long",
+        "coordinate": {
+            "longitude": "106.28333",
+            "latitude": "10.23333"
+        }
+    },
+    {
+        "city": "Bắc Kạn",
+        "coordinate": {
+            "longitude": "105.83481",
+            "latitude": "22.14701"
+        }
+    },
+    {
+        "city": "Dương Đông, Phú Quốc",
+        "coordinate": {
+            "longitude": "103.95929",
+            "latitude": "10.21716"
+        }
+    },
+    {
+        "city": "Phủ Lý, Hà Nam",
+        "coordinate": {
+            "longitude": "105.91221",
+            "latitude": "20.54531"
+        }
+    },
+    {
+        "city": "Sơn La",
+        "coordinate": {
+            "longitude": "103.91882",
+            "latitude": "21.3256"
+        }
+    },
+    {
+        "city": "Vĩnh Yên",
+        "coordinate": {
+            "longitude": "105.60489",
+            "latitude": "21.30891"
+        }
+    }
+]

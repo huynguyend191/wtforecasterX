@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "195557048661",
+    "firebase_url": "https://wtforecaster.firebaseio.com",
+    "project_id": "wtforecaster",
+    "storage_bucket": "wtforecaster.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195557048661:android:5dc0de6315420e92",
+        "android_client_info": {
+          "package_name": "com.wtforecaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195557048661-n277h8io2t1c162uv670ssobvs01ob7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wtforecaster",
+            "certificate_hash": "8869cf5805374dbe83f5af066b4d35792c0e7d92"
+          }
+        },
+        {
+          "client_id": "195557048661-j5v9p9ji2o5q0sr5nomob3gihi9m05qa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXbzT_y6wVqyM_BplBG9fFM_6e1cKfWq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195557048661-j5v9p9ji2o5q0sr5nomob3gihi9m05qa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
