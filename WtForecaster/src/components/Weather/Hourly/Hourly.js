@@ -77,6 +77,10 @@ class Hourly extends Component {
               }
             />
             <View style={styles.container} pointerEvents='none'>
+              <View style={styles.chartNameContainer}>
+                <WeatherIcon name="chart-line" size={17} color="white" />
+                <Text style={styles.chartName}>Temperature Chart</Text>
+              </View>   
               <VictoryChart>
                 <VictoryLine
                   style={{
@@ -86,11 +90,9 @@ class Hourly extends Component {
                   categories={chartLabel}
                 />
                 <VictoryAxis
-                  label="Temperature Chart"
                   style={{
                     axis: {stroke: "white"},
                     tickLabels: {fontSize: 10, fill: "white"},
-                    axisLabel: {fontSize: 14, padding: 30, fill:"white"}
                   }}
                 />
                 <VictoryAxis dependentAxis
@@ -99,6 +101,7 @@ class Hourly extends Component {
                     tickLabels: {fontSize: 10, fill: "white"}
                   }}
                 />
+                
               </VictoryChart>
             </View>
          
@@ -196,13 +199,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
-    marginBottom: 20
+    marginBottom: 20,
+    borderTopWidth: 1,
+    borderTopColor: 'white',
+    marginTop: 5
   },
   summaryTitleContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  chartName: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 3
+  },
+  chartNameContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
   }
 });
 

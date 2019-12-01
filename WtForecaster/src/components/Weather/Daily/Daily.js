@@ -6,7 +6,7 @@ import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import DailyItem from './DailyItem';
 import {convertTemp} from '../../../utils/convertTemp';
-import { VictoryLine, VictoryChart, VictoryAxis } from 'victory-native';
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import {getDailyDataMax, getDailyDataMin, getDailyLabel} from '../../../utils/getChartData';
 
 class Daily extends Component {
@@ -81,26 +81,28 @@ class Daily extends Component {
               }
             />
             <View style={styles.container} pointerEvents='none'>
+              <View style={styles.chartNameContainer}>
+                <WeatherIcon name="chart-areaspline" size={17} color="white" />
+                <Text style={styles.chartName}>Temperature Chart</Text>
+              </View>  
               <VictoryChart>
-                <VictoryLine
+                <VictoryArea
                   style={{
-                    data: { stroke: "white", color: "white" },
+                    data: { stroke: "white", color: "white", fill: "#EED7A2" }, 
                   }}
                   categories={chartLabel}
                   data={maxTempData}
                 />
-                 <VictoryLine
+                 <VictoryArea
                   style={{
-                    data: { stroke: "white", color: "white" },
+                    data: { stroke: "white", color: "white", fill: "#C3DFEB" },
                   }}
                   data={minTempData}
                 />
                 <VictoryAxis
-                  label="Temperature Chart"
                   style={{
                     axis: {stroke: "white"},
                     tickLabels: {fontSize: 10, fill: "white"},
-                    axisLabel: {fontSize: 14, padding: 30, fill:"white"}
                   }}
                 />
                 <VictoryAxis dependentAxis
@@ -205,13 +207,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "transparent",
-    marginBottom: 20
+    marginBottom: 20,
+    borderTopWidth: 1,
+    borderTopColor: 'white',
+    marginTop: 5
   },
   summaryTitleContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  chartName: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 3
+  },
+  chartNameContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
   }
 });
 
