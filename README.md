@@ -7,6 +7,7 @@
    - Xem tin tức thời tiết từ vov.vn
 
 ## 2. Cài đặt 
+  Cài đặt MongoDB, tạo collection `weatherApp` nếu cần, import dữ liệu từ `mongoData/places.json`
   Clone thư mục về
   ```` git clone https://github.com/huynguyend191/wtforecasterX ````
   Cài đặt thư viện cho từng folder
