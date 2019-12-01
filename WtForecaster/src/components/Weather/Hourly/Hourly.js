@@ -47,12 +47,35 @@ class Hourly extends Component {
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.hourlySummary}>
-              <Text style={styles.summaryTitle}>HOURLY SUMMARY</Text>
+              <View style={styles.summaryTitleContainer}>
+                <WeatherIcon name="clock-outline" size={19} color="white" />
+                <Text style={styles.summaryTitle}>HOURLY SUMMARY</Text>
+              </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{hourlyWeather.hourlySummary}</Text>
                 <WeatherIcon name={weatherIconName[hourlyWeather.hourlyIcon]} size={50} color="white" />
               </View>
             </View>
+            <FlatList 
+              // showsHorizontalScrollIndicator={false}
+              horizontal
+              data={hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0)} //take every 2 hour
+              keyExtractor={(item, index) => item.time}
+              indicatorStyle="white"
+              renderItem={({item}) => 
+                <HourlyItem 
+                  time={item.time}
+                  summary={item.summary}
+                  icon={item.icon}
+                  rainProb={item.precipProbability}
+                  humidity={item.humidity}
+                  windSpeed={item.windSpeed}
+                  uvIndex={item.uvIndex}
+                  temp={convertTemp(item.temp, this.props.unit)}
+                  index={item.index}
+                />
+              }
+            />
             <View style={styles.container} pointerEvents='none'>
               <VictoryChart>
                 <VictoryLine
@@ -78,26 +101,7 @@ class Hourly extends Component {
                 />
               </VictoryChart>
             </View>
-            <FlatList 
-              showsHorizontalScrollIndicator={false}
-              horizontal
-              data={hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0)} //take every 2 hour
-              keyExtractor={(item, index) => item.time}
-              showsVerticalScrollIndicator={false}
-              renderItem={({item}) => 
-                <HourlyItem 
-                  time={item.time}
-                  summary={item.summary}
-                  icon={item.icon}
-                  rainProb={item.precipProbability}
-                  humidity={item.humidity}
-                  windSpeed={item.windSpeed}
-                  uvIndex={item.uvIndex}
-                  temp={convertTemp(item.temp, this.props.unit)}
-                  index={item.index}
-                />
-              }
-            />
+         
           </ScrollView>
         )
       } else {
@@ -166,7 +170,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 10
+    marginLeft: 4
   },
   summaryContent: {
     display: 'flex',
@@ -193,6 +197,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     marginBottom: 20
+  },
+  summaryTitleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 

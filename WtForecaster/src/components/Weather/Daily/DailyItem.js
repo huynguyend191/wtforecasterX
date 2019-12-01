@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     padding: 10,
-    marginHorizontal: 10
+    marginHorizontal: 5,
+    width: 310,
   },
   date: {
     textAlign: 'center',

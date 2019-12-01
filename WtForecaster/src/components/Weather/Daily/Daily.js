@@ -49,12 +49,37 @@ class Daily extends Component {
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.dailySummary}>
-              <Text style={styles.summaryTitle}>DAILY SUMMARY</Text>
+              <View style={styles.summaryTitleContainer}>
+                <WeatherIcon name="calendar-week" size={19} color="white" />
+                <Text style={styles.summaryTitle}>DAILY SUMMARY</Text>
+              </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{dailyWeather.dailySummary}</Text>
                 <WeatherIcon name={weatherIconName[dailyWeather.dailyIcon]} size={50} color="white" />
               </View>
             </View>
+            <FlatList 
+              extraData={this.props}
+              data={dailyWeather.dailyForecast}
+              keyExtractor={(item, index) => item.date}
+              // showsHorizontalScrollIndicator={false}
+              indicatorStyle='white'
+              horizontal
+              renderItem={({item}) => 
+                <DailyItem 
+                  date={item.date}
+                  summary={item.summary}
+                  icon={item.icon}
+                  rainProb={item.precipProbability}
+                  humidity={item.humidity}
+                  windSpeed={item.windSpeed}
+                  uvIndex={item.uvIndex}
+                  tempMax={convertTemp(item.temperatureMax, this.props.unit)}
+                  tempMin={convertTemp(item.temperatureMin, this.props.unit)}
+                  index={item.index}
+                />
+              }
+            />
             <View style={styles.container} pointerEvents='none'>
               <VictoryChart>
                 <VictoryLine
@@ -86,26 +111,6 @@ class Daily extends Component {
                 />
               </VictoryChart>
             </View>
-            <FlatList 
-              extraData={this.props}
-              data={dailyWeather.dailyForecast}
-              keyExtractor={(item, index) => item.date}
-              showsVerticalScrollIndicator={false}
-              renderItem={({item}) => 
-                <DailyItem 
-                  date={item.date}
-                  summary={item.summary}
-                  icon={item.icon}
-                  rainProb={item.precipProbability}
-                  humidity={item.humidity}
-                  windSpeed={item.windSpeed}
-                  uvIndex={item.uvIndex}
-                  tempMax={convertTemp(item.temperatureMax, this.props.unit)}
-                  tempMin={convertTemp(item.temperatureMin, this.props.unit)}
-                  index={item.index}
-                />
-              }
-            />
           </ScrollView>
         )
       } else {
@@ -174,7 +179,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 10
+    marginLeft: 4
   },
   summaryContent: {
     display: 'flex',
@@ -201,6 +206,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     marginBottom: 20
+  },
+  summaryTitleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
