@@ -14,11 +14,11 @@ const Weather = createMaterialTopTabNavigator({
   tabBarOptions: {
     style: {
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      height: 2,
+      height: 3,
     },
     indicatorStyle: {
       borderBottomColor: 'white',
-      borderBottomWidth: 2,
+      borderBottomWidth: 3,
     },
     showLabel: false
 }}

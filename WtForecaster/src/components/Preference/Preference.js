@@ -96,7 +96,10 @@ class Preference extends Component {
     return (
       <View style={styles.container}>
         {userProfile}
-        <Text style={styles.setting}>SETTINGS</Text>
+        <View style={styles.settingTextContainer}>
+          <WeatherIcon name="settings" size={19} color="white" />
+          <Text style={styles.setting}>SETTINGS</Text>
+        </View>    
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
             <WeatherIcon name="thermometer" size={19} color="white" />
@@ -155,7 +158,8 @@ const styles = StyleSheet.create({
   setting: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
+    marginLeft: 4
   },
   settingContent: {
     borderTopColor: 'white',
@@ -176,6 +180,12 @@ const styles = StyleSheet.create({
   settingDisplay: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  settingTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
