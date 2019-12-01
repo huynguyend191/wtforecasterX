@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Switch, Button, Image} from 'react-native';
+import {StyleSheet, Text, View, Switch, TouchableOpacity, Image} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
@@ -72,7 +72,7 @@ class Preference extends Component {
         <GoogleSigninButton
           style={{ width: 192, height: 48 }}
           size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Light}
+          color={GoogleSigninButton.Color.Dark}
           onPress={this.signIn}
           disabled={this.state.signInLoading} 
         />
@@ -84,12 +84,18 @@ class Preference extends Component {
         <View style={styles.userContainer}>
           <View style={styles.userInfo}>
             <Image source={{uri: user.photo}} style={styles.avatar} />
-            <View>
-              <Text style={styles.username}>{user.name}</Text>
-              <Text style={styles.email}>{user.email}</Text>
+            <View style={styles.userNameArea}>
+              <View>
+                <Text style={styles.username}>{user.name}</Text>
+                <View style={styles.email}>
+                  <Text>{user.email}</Text>
+                </View>
+              </View>
+              <TouchableOpacity style={styles.signOut} onPress={this.signOut}>
+                <Text style={styles.signOutText}>SIGN OUT</Text>
+              </TouchableOpacity>
             </View>
           </View>
-          <Button title="Sign out" onPress={this.signOut} color='#44329B' />
         </View>
       )
     }
@@ -97,7 +103,7 @@ class Preference extends Component {
       <View style={styles.container}>
         {userProfile}
         <View style={styles.settingTextContainer}>
-          <WeatherIcon name="settings" size={19} color="white" />
+          <WeatherIcon name="settings" size={17} color="white" />
           <Text style={styles.setting}>SETTINGS</Text>
         </View>    
         <View style={styles.settingContent}>
@@ -112,6 +118,17 @@ class Preference extends Component {
             thumbColor='white'
           />
         </View>
+        <View style={styles.aboutContainer}>
+          <WeatherIcon name="information-outline" size={17} color="white" />
+          <Text style={styles.aboutText}>ABOUT</Text>
+        </View>    
+        <View style={styles.aboutContentContainer}>
+            <Text style={styles.aboutContent}>Version: 1.9.1 Develop</Text>
+            <Text style={styles.aboutContent}>Authors: Group 20 - UI Design 2019 Course</Text>
+            <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>
+            <Text style={styles.aboutContent}>News Source: VOV.vn</Text>
+            <Text style={styles.aboutContent}>Platform: Powered by React Native</Text>
+          </View>
       </View>
     );
   }
@@ -121,50 +138,48 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-    paddingHorizontal: 10
+    paddingHorizontal: 5
   },
   userContainer: {
-    padding: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    height: 200,
+    padding: 5,
+    backgroundColor: 'white',
+    height: 160,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    marginBottom: 20
+    marginBottom: 20,
   },
   userInfo: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 35,
-    justifyContent: 'space-between'
+    height: '100%'
   },
   avatar: {
-    width: 90,
-    height: 90,
-    marginRight: 10,
+    width: '42%',
+    height: '100%',
+    marginRight: 5,
+    marginLeft: 5,
     borderRadius: 10,
     borderColor: 'blue',
     borderWidth: 1
   },
   email: {
-    textAlign: 'center'
+    // textAlign: 'center'
+    overflow: 'hidden'
   },
   username: {
-    textAlign: 'center',
-    fontSize: 20
+    // textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   setting: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     marginLeft: 4
   },
   settingContent: {
-    borderTopColor: 'white',
-    borderTopWidth: 1,
-    marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -185,7 +200,54 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    borderTopColor: 'white',
+    borderTopWidth: 1,
+    paddingTop: 20
+  },
+  userNameArea: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '58%',
+  },
+  aboutContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopColor: 'white',
+    borderTopWidth: 1,
+    paddingTop: 20,
+    marginTop: 20
+  },
+  aboutText: {
+    color: 'white',
+    fontSize: 16,
+    marginLeft: 3
+  },
+  signOut: {
+    width: '90%',
+    alignSelf: 'center',
+    backgroundColor: '#44329B',
+    height: 30,
+    borderRadius: 5,
     justifyContent: 'center'
+  },
+  signOutText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  aboutContentContainer: {
+    marginTop: 20,
+    justifyContent: 'center',
+    padding: 10,
+    alignSelf: 'center'
+  },
+  aboutContent: {
+    color: 'white',
+    marginBottom: 5
   }
 });
 
