@@ -122,7 +122,7 @@ class Preference extends Component {
           <WeatherIcon name="information-outline" size={17} color="white" />
           <Text style={styles.aboutText}>ABOUT</Text>
         </View>    
-        <View style={styles.aboutContentContainer}>
+          <View style={styles.aboutContentContainer}>
             <Text style={styles.aboutContent}>Version: 1.9.1 Develop</Text>
             <Text style={styles.aboutContent}>Authors: Group 20 - UI Design 2019 Course</Text>
             <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>

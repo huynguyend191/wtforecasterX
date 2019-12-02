@@ -6,7 +6,7 @@ import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import DailyItem from './DailyItem';
 import {convertTemp} from '../../../utils/convertTemp';
-import { VictoryLine, VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
+import { VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import {getDailyDataMax, getDailyDataMin, getDailyLabel} from '../../../utils/getChartData';
 
 class Daily extends Component {
@@ -88,14 +88,14 @@ class Daily extends Component {
               <VictoryChart>
                 <VictoryArea
                   style={{
-                    data: { stroke: "white", color: "white", fill: "#EED7A2" }, 
+                    data: { stroke: "#C3DFEB", color: "white", fill: "#4c9dd5"}, 
                   }}
                   categories={chartLabel}
                   data={maxTempData}
                 />
                  <VictoryArea
                   style={{
-                    data: { stroke: "white", color: "white", fill: "#C3DFEB" },
+                    data: { color: "white", fill: "#C3DFEB"},
                   }}
                   data={minTempData}
                 />
