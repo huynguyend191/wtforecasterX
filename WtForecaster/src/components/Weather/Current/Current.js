@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentWeather, getCurrentCity } from '../../../store/actions';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
-import {convertTemp} from '../../../utils/convertTemp';
+import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 
 class Current extends Component {
 
@@ -62,9 +62,9 @@ class Current extends Component {
             <Text style={styles.date}>{new Date(currentWeather.current.time).toDateString()}</Text>
             <View style={styles.mainDisplay}>
               <WeatherIcon name={weatherIconName[currentWeather.current.icon]} size={120} color="white" />
-              <Text style={styles.temp}>{convertTemp(currentWeather.current.temp, this.props.unit)}&#176;</Text>
+              <Text style={styles.temp}>{convertTemp(currentWeather.current.temp, this.props.tempUnit)}&#176;</Text>
             </View>
-            <Text style={styles.realTemp}>Real Feel: {convertTemp(currentWeather.current.apparentTemp, this.props.unit)}&#176;</Text>
+            <Text style={styles.realTemp}>Real Feel: {convertTemp(currentWeather.current.apparentTemp, this.props.tempUnit)}&#176;</Text>
             <Text style={styles.summary}>{currentWeather.current.summary}</Text>
             <View style={styles.detailInfo}>
               <View style={styles.detailItem}>
@@ -86,10 +86,10 @@ class Current extends Component {
                   <WeatherIcon name="wind-turbine" color="white" size={19} />
                   <Text style={styles.detailLabelText}>Wind speed</Text>
                 </View>
-                <Text style={styles.detailData}>{currentWeather.current.windSpeed} mph</Text>
+                <Text style={styles.detailData}>{convertWindSpeed(currentWeather.current.windSpeed,this.props.speedUnit)} {this.props.speedUnit}</Text>
               </View>
               <View style={styles.detailItem}>
-                <View style={styles.detailLabel}> 
+                <View style={styles.detailLabel}>  
                   <WeatherIcon name="weather-rainy" color="white" size={19} />
                   <Text style={styles.detailLabelText}>Rain probability</Text>
                 </View>
@@ -137,7 +137,8 @@ const mapStateToProps = state => {
     loadingCurrentWeather: state.weatherReducer.loadingCurrentWeather,
     currentCity: state.placesReducer.currentCity,
     loadingCurrentCity: state.placesReducer.loadingCurrentCity,
-    unit: state.weatherReducer.unit
+    tempUnit: state.weatherReducer.tempUnit,
+    speedUnit: state.weatherReducer.speedUnit
   }
 }
 

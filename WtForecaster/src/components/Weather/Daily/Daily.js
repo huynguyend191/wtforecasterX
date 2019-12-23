@@ -5,7 +5,7 @@ import { fetchDailyWeather } from '../../../store/actions';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import DailyItem from './DailyItem';
-import {convertTemp} from '../../../utils/convertTemp';
+import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import { VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import {getDailyDataMax, getDailyDataMin, getDailyLabel} from '../../../utils/getChartData';
 
@@ -35,8 +35,8 @@ class Daily extends Component {
     if (!this.props.loadingDailyWeather ) {
       if (this.props.dailyWeather) {
         const dailyWeather = this.props.dailyWeather;
-        const maxTempData = getDailyDataMax(dailyWeather.dailyForecast, this.props.unit);
-        const minTempData = getDailyDataMin(dailyWeather.dailyForecast, this.props.unit);
+        const maxTempData = getDailyDataMax(dailyWeather.dailyForecast, this.props.tempUnit);
+        const minTempData = getDailyDataMin(dailyWeather.dailyForecast, this.props.tempUnit);
         const chartLabel = getDailyLabel(dailyWeather.dailyForecast);
         displayWeatherInfo = (
           <ScrollView
@@ -72,10 +72,11 @@ class Daily extends Component {
                   icon={item.icon}
                   rainProb={item.precipProbability}
                   humidity={item.humidity}
-                  windSpeed={item.windSpeed}
+                  windSpeed={convertWindSpeed(item.windSpeed, this.props.speedUnit)}
                   uvIndex={item.uvIndex}
-                  tempMax={convertTemp(item.temperatureMax, this.props.unit)}
-                  tempMin={convertTemp(item.temperatureMin, this.props.unit)}
+                  tempMax={convertTemp(item.temperatureMax, this.props.tempUnit)}
+                  tempMin={convertTemp(item.temperatureMin, this.props.tempUnit)}
+                  speedUnit={this.props.speedUnit}
                   index={item.index}
                 />
               }
@@ -145,7 +146,8 @@ const mapStateToProps = state => {
   return {
     dailyWeather: state.weatherReducer.dailyWeather,
     loadingDailyWeather: state.weatherReducer.loadingDailyWeather,
-    unit: state.weatherReducer.unit,
+    tempUnit: state.weatherReducer.tempUnit,
+    speedUnit: state.weatherReducer.speedUnit
   }
 }
 

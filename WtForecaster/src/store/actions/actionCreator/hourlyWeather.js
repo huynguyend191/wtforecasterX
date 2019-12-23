@@ -33,3 +33,9 @@ export const fetchHourlyWeather = (coords) => {
   }
 }
 
+export const changeTimeFormat = (format) => {
+  return {
+    type: actionTypes.CHANGE_TIME_FORMAT,
+    format
+  }
+}

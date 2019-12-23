@@ -27,7 +27,7 @@ res.header("Access-Control-Allow-Origin", "*");
 // cookies.set("JWT", req.token, {maxAge: '2678400000'})
 res.status(200).send(req.auth);
 
-};
+};  
 
 var saveTokenCookies = function (req, res, value) {
 cookies.set("JWT", value, {maxAge: '2678400000'})

@@ -36,7 +36,7 @@ class DailyItem extends Component {
         <View style={styles.detailContainer}>
           <View style={styles.detailRow}>
             <WeatherIcon name="wind-turbine" color="white" size={19} />
-            <Text style={styles.detailText}>{this.props.windSpeed} mph</Text>
+            <Text style={styles.detailText}>{this.props.windSpeed} {this.props.speedUnit}</Text>
           </View>
           <View style={styles.detailRow}> 
             <WeatherIcon name="white-balance-sunny" color="white" size={19} />

@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Switch, TouchableOpacity, Image} from 'react-native';
+import {StyleSheet, Text, View, Switch, TouchableOpacity, Image, AsyncStorage} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-import { changeUnit } from '../../store/actions';
+import { changeTempUnit, changeSpeedUnit, changeTimeFormat } from '../../store/actions';
+import SwitchSelector from "react-native-switch-selector";
 
 class Preference extends Component {
   state = {
-    fahrenheit: false,
+    tempUnit: 'C',
+    timeFormat: '24h',
+    speedUnit: 'mph',
     user: null,
     signInLoading: false
   }
+  
   signIn = async () => {
     this.setState({signInLoading: true})
     try {
@@ -35,6 +39,7 @@ class Preference extends Component {
       }
     }
   };
+
   signOut = async () => {
     try {
       await GoogleSignin.revokeAccess();
@@ -44,6 +49,7 @@ class Preference extends Component {
       alert('You are not signed in');
     }
   };
+
   getCurrentUser = async () => {
     this.setState({signInLoading: true})
     const currentUser = await GoogleSignin.getCurrentUser();
@@ -52,21 +58,51 @@ class Preference extends Component {
       signInLoading: false
     });
   };
-
   componentDidMount() {
     GoogleSignin.configure();
     this.getCurrentUser();
   }
-  
-  toggleSwitch = (value) => {
-    this.setState({fahrenheit: value});
-    if (value) {
-      this.props.changeUnit('us');
-    } else {
-      this.props.changeUnit('si');
+
+  changeTemperatureUnit = async (value) => {
+    this.setState({tempUnit: value});
+    this.props.changeTempUnit(value)
+    try {
+      await AsyncStorage.setItem("tempUnit", value);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  changeWindSpeedUnit = async (value) => {
+    this.setState({windSpeed: value});
+    this.props.changeSpeedUnit(value)
+    try {
+      await AsyncStorage.setItem("speedUnit", value);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  changeTimeFormat = async (value) => {
+    this.props.changeTimeFormat(value);
+    try {
+      await AsyncStorage.setItem("timeFormat", value);
+    } catch (error) {
+      console.log(error);
     }
   }
   render() {
+    const tempUnits = [
+      { label: '°C', value: 'C' },
+      { label: '°F', value: 'F'}
+    ];
+    const speedUnits = [
+      {label: 'mph', value: 'mph'},
+      {label: 'm/s', value: 'm/s'}
+    ];
+    const timeFormats = [
+      {label: '24:00', value: '24h'},
+      {label: '12:00', value: '12h'}
+    ]
     let userProfile = (
       <View style={styles.userContainer}>
         <GoogleSigninButton
@@ -109,13 +145,60 @@ class Preference extends Component {
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
             <WeatherIcon name="thermometer" size={19} color="white" />
-            <Text style={styles.settingLabel}>{this.state.fahrenheit ? 'Fahrenheit' : 'Celcius'}</Text>
+            <Text style={styles.settingLabel}>Temperature Unit</Text>
           </View>
-          <Switch
-            onValueChange={this.toggleSwitch}
-            value={this.state.fahrenheit}
-            trackColor={{true: '#44329B'}}
-            thumbColor='white'
+        
+          <SwitchSelector
+            onPress={value => this.changeTemperatureUnit(value)}
+            initial={this.props.tempUnit === 'C' ? 0 : 1}
+            borderRadius={2}
+            buttonColor={'orange'}
+            animationDuration={50}
+            hasPadding={false}
+            height={25}
+            options={tempUnits}
+            selectedColor={"#fff"}
+            textColor={"#000"}
+            style={styles.switchContainer}
+          />
+        </View>
+        <View style={styles.settingContent}>
+          <View style={styles.settingDisplay}>
+            <WeatherIcon name="speedometer" size={19} color="white" />
+            <Text style={styles.settingLabel}>Wind Speed Unit</Text>
+          </View>
+          <SwitchSelector
+            onPress={value => this.changeWindSpeedUnit(value)}
+            borderRadius={2}
+            buttonColor={'orange'}
+            initial={this.props.speedUnit === 'mph' ? 0 : 1}
+            animationDuration={50}
+            hasPadding={false}
+            height={25}
+            options={speedUnits}
+            selectedColor={"#fff"}
+            textColor={"#000"}
+            style={styles.switchContainer}
+          />
+        </View>
+        <View style={styles.settingContent}>
+          <View style={styles.settingDisplay}>
+            <WeatherIcon name="timer" size={19} color="white" />
+            <Text style={styles.settingLabel}>Time Format</Text>
+          </View>
+
+          <SwitchSelector
+            onPress={value => this.changeTimeFormat(value)}
+            borderRadius={2}
+            initial={this.props.timeFormat === '24h' ? 0 : 1}
+            buttonColor={'orange'}
+            animationDuration={50}
+            hasPadding={false}
+            height={25}
+            options={timeFormats}
+            selectedColor={"#fff"}
+            textColor={"#000"}
+            style={styles.switchContainer}
           />
         </View>
         <View style={styles.aboutContainer}>
@@ -127,7 +210,6 @@ class Preference extends Component {
             <Text style={styles.aboutContent}>Authors: Group 20 - UI Design 2019 Course</Text>
             <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>
             <Text style={styles.aboutContent}>News Source: VOV.vn</Text>
-            <Text style={styles.aboutContent}>Platform: Powered by React Native</Text>
           </View>
       </View>
     );
@@ -178,11 +260,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     marginLeft: 4
-  },
+  },  
   settingContent: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between',  
     alignItems: 'center',
     paddingHorizontal: 40,
     paddingTop: 20
@@ -190,7 +272,7 @@ const styles = StyleSheet.create({
   settingLabel: {
     color: 'white',
     fontSize: 16,
-    marginLeft: 3
+    marginLeft: 6
   },
   settingDisplay: {
     display: 'flex',
@@ -248,14 +330,27 @@ const styles = StyleSheet.create({
   aboutContent: {
     color: 'white',
     marginBottom: 5
+  },
+  switchContainer: {
+    marginLeft: 5, 
+    width: '28%',
   }
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeUnit: (unit) => dispatch(changeUnit(unit))
+    changeTempUnit: (unit) => dispatch(changeTempUnit(unit)),
+    changeSpeedUnit: (unit) => dispatch(changeSpeedUnit(unit)),
+    changeTimeFormat: (format) => dispatch(changeTimeFormat(format))
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    tempUnit: state.weatherReducer.tempUnit,
+    speedUnit: state.weatherReducer.speedUnit,
+    timeFormat: state.weatherReducer.timeFormat
+  }
+}
 
-export default connect(null, mapDispatchToProps)(Preference);
+export default connect(mapStateToProps, mapDispatchToProps)(Preference);

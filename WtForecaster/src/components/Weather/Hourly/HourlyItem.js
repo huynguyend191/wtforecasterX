@@ -15,10 +15,10 @@ class HourlyItem extends Component {
     }).start();
   }
   render() {
-    const hour = new Date(this.props.time).getHours() + ':00';
+   
     return (
       <Animated.View style={[styles.hourlyItem, { opacity: this.state.scaleValue }]}>
-        <Text style={styles.hour}>{hour}</Text>
+        <Text style={styles.hour}>{this.props.time}</Text>
         <View style={styles.tempContainer}>
           <WeatherIcon name={weatherIconName[this.props.icon]} size={40} color="white" />
           <Text style={styles.temp}>{this.props.temp}&#176;</Text>
@@ -33,7 +33,7 @@ class HourlyItem extends Component {
         </View>
         <View style={styles.detailRow}>
           <WeatherIcon name="wind-turbine" color="white" size={19} />
-          <Text style={styles.detailText}>{this.props.windSpeed} mph</Text>
+          <Text style={styles.detailText}>{this.props.windSpeed} {this.props.speedUnit}</Text>
         </View>
         <View style={styles.detailRow}> 
           <WeatherIcon name="white-balance-sunny" color="white" size={19} />
