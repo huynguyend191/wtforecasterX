@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Switch, TouchableOpacity, Image, AsyncStorage} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image, AsyncStorage, ScrollView} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
@@ -137,6 +137,8 @@ class Preference extends Component {
     }
     return (
       <View style={styles.container}>
+        <ScrollView>
+
         {userProfile}
         <View style={styles.settingTextContainer}>
           <WeatherIcon name="settings" size={17} color="white" />
@@ -152,7 +154,7 @@ class Preference extends Component {
             onPress={value => this.changeTemperatureUnit(value)}
             initial={this.props.tempUnit === 'C' ? 0 : 1}
             borderRadius={2}
-            buttonColor={'orange'}
+            buttonColor={'#54B374'}
             animationDuration={50}
             hasPadding={false}
             height={25}
@@ -170,7 +172,7 @@ class Preference extends Component {
           <SwitchSelector
             onPress={value => this.changeWindSpeedUnit(value)}
             borderRadius={2}
-            buttonColor={'orange'}
+            buttonColor={'#54B374'}
             initial={this.props.speedUnit === 'mph' ? 0 : 1}
             animationDuration={50}
             hasPadding={false}
@@ -191,7 +193,7 @@ class Preference extends Component {
             onPress={value => this.changeTimeFormat(value)}
             borderRadius={2}
             initial={this.props.timeFormat === '24h' ? 0 : 1}
-            buttonColor={'orange'}
+            buttonColor={'#54B374'}
             animationDuration={50}
             hasPadding={false}
             height={25}
@@ -211,6 +213,8 @@ class Preference extends Component {
             <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>
             <Text style={styles.aboutContent}>News Source: VOV.vn</Text>
           </View>
+          </ScrollView>
+
       </View>
     );
   }
@@ -220,7 +224,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-    paddingHorizontal: 5
+    paddingHorizontal: 7
   },
   userContainer: {
     padding: 5,

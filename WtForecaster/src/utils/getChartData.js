@@ -1,4 +1,4 @@
-import {convertTemp} from './convertUnit';
+import {convertTemp, convertTimeFormat} from './convertUnit';
 
 export const getHourlyData = (weatherInfo, unit) => {
   return [
@@ -13,7 +13,7 @@ export const getHourlyData = (weatherInfo, unit) => {
   ];
 }
 
-export const getHourlyLabel = (weatherInfo) => {
+export const getHourlyLabel = (weatherInfo, timeFormat) => {
   return { x: [
     new Date(weatherInfo[0].time).getHours() + ':00', 
     new Date(weatherInfo[1].time).getHours() + ':00', 

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     paddingTop: 10,
-    paddingHorizontal: 5
+    paddingHorizontal: 10
   },
   loadingText: {
     color: 'white',

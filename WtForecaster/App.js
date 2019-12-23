@@ -9,7 +9,8 @@ import { initConfig } from './src/store/actions';
 
 class App extends Component {
   state = {
-    backgroundColor: ['#44329B', '#4c9dd5', '#4ac2d2']
+    // backgroundColor: ['#44329B', '#4c9dd5', '#4ac2d2']
+    backgroundColor: ['#36287c', '#454879', '#567AAC']
   }
   changeColor = () => {
     const currentHour = new Date(Date.now()).getHours();

@@ -36,7 +36,7 @@ class Hourly extends Component {
       if (this.props.hourlyWeather) {
         const hourlyWeather = this.props.hourlyWeather;
         const chartData = getHourlyData(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0), this.props.tempUnit);
-        const chartLabel = getHourlyLabel(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0));
+        const chartLabel = getHourlyLabel(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0), this.props.timeFormat);
         displayWeatherInfo = (
           <ScrollView
             refreshControl={
