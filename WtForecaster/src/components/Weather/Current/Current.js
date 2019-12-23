@@ -115,8 +115,9 @@ class Current extends Component {
             }
             style={styles.weather}
           >
-            <View>
+            <View style={styles.errorView}>
               <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.guide}>Swipe down to refresh</Text>
             </View>
           </ScrollView>
           
@@ -227,12 +228,22 @@ const styles = StyleSheet.create({
   },
   error: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 14,
     marginTop: 250
   },
+  guide: {
+    color: 'white',
+    fontSize: 14,
+    marginTop: 12
+  },    
   loadingText: {
     color: 'white',
     marginBottom: 5
+  },
+  errorView: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

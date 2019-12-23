@@ -5,7 +5,6 @@ import weatherIconName from '../../../utils/weatherIconName';
 import { connect } from 'react-redux';
 import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import axios from '../../../utils/axiosConfig';
-
 class CityWeather extends Component {
   state = {
     scaleValue: new Animated.Value(0.01),
@@ -57,7 +56,8 @@ class CityWeather extends Component {
         <View style={styles.locationContainer}>
           <WeatherIcon name="map-marker" size={19} color="white" />
           <Text style={styles.location}>{this.props.city}</Text>
-          </View>      
+          <WeatherIcon style={styles.dots} onPress={this.props.onClickRemove} name="trash-can-outline" size={23} color="white" />
+        </View>     
         <Text style={styles.date}>{weather.date}</Text>
         <View style={styles.mainDisplay}>
           <WeatherIcon name={weatherIconName[weather.icon]} size={50} color="white" />
@@ -149,6 +149,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 3
   },
+  dots: {
+    position: 'absolute',
+    right: 0
+  }
 })
 
 const mapStateToProps = state => {

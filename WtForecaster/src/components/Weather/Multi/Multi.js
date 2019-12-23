@@ -89,6 +89,7 @@ class Multi extends Component {
                 <CityWeather 
                   city={item.city}
                   coords={item.coordinate}
+                  onClickRemove={() => this.removeCity(index)}
                 />
               </TouchableOpacity> 
             }
