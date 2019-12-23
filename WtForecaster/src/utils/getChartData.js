@@ -1,4 +1,4 @@
-import {convertTemp} from './convertTemp';
+import {convertTemp} from './convertUnit';
 
 export const getHourlyData = (weatherInfo, unit) => {
   return [

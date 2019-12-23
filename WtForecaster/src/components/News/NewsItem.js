@@ -19,7 +19,7 @@ class NewsItem extends Component {
           <Text style={styles.summary}>{this.props.summary}</Text>
           <Image source={{uri: this.props.thumbnail}} style={styles.thumbnail} />
         </Animated.View>
-      </TouchableHighlight >
+      </TouchableHighlight>
     );
   }
 }

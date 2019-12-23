@@ -7,7 +7,7 @@ const NewsSchema = require('../entities/news.model')
 mongoose.connect('mongodb://localhost:27017/weatherApp', function (err) {
   
     if (err) throw err;
-  
+    
     console.log('Successfully connected');
   
  });

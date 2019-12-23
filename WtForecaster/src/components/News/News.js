@@ -5,7 +5,6 @@ import { fetchNews } from '../../store/actions';
 import NewsItem from './NewsItem';
 
 class News extends Component {
-  
   componentDidMount() {
     this.onRefresh();
   }

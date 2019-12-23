@@ -7,7 +7,9 @@ const initialState = {
   loadingCurrentWeather: false,
   hourlyWeather: null,
   loadingHourlyWeather: false,
-  unit: 'si'
+  timeUnit: 'C',
+  speedUnit: 'mph',
+  timeFormat: '24h'
 }
 
 const reducer = ((state = initialState, action) => {
@@ -46,7 +48,7 @@ const reducer = ((state = initialState, action) => {
         loadingCurrentWeather: false
       };
 
-      case actionTypes.START_FETCHING_HOURLY_WEATHER:
+    case actionTypes.START_FETCHING_HOURLY_WEATHER:
       return {
         ...state,
         loadingHourlyWeather: true
@@ -62,12 +64,28 @@ const reducer = ((state = initialState, action) => {
         ...state,
         loadingHourlyWeather: false
       };
-    case actionTypes.CHANGE_UNIT:
+    case actionTypes.CHANGE_TEMP_UNIT:
       return {
         ...state,
-        unit: action.unit
+        tempUnit: action.unit
       }
-    
+    case actionTypes.CHANGE_SPEED_UNIT: 
+      return {
+        ...state,
+        speedUnit: action.unit
+      }
+    case actionTypes.INIT_CONFIG:
+      return {
+        ...state,
+        speedUnit: action.config.speedUnit,
+        tempUnit: action.config.tempUnit,
+        timeFormat: action.config.timeFormat
+      }
+    case actionTypes.CHANGE_TIME_FORMAT:
+      return {
+        ...state,
+        timeFormat: action.format
+      }
     default:
       return state;
   }

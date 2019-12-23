@@ -5,7 +5,7 @@ import { fetchHourlyWeather } from '../../../store/actions';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import HourlyItem from './HourlyItem';
-import {convertTemp} from '../../../utils/convertTemp';
+import { convertTemp, convertWindSpeed, convertTimeFormat } from '../../../utils/convertUnit';
 import { VictoryLine, VictoryChart, VictoryAxis } from 'victory-native';
 import {getHourlyData, getHourlyLabel} from '../../../utils/getChartData';
 
@@ -25,6 +25,7 @@ class Hourly extends Component {
     })
   }
   render() {
+    console.log("render " + this.props.timeFormat)
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
@@ -34,7 +35,7 @@ class Hourly extends Component {
     if (!this.props.loadingHourlyWeather ) {
       if (this.props.hourlyWeather) {
         const hourlyWeather = this.props.hourlyWeather;
-        const chartData = getHourlyData(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0), this.props.unit);
+        const chartData = getHourlyData(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0), this.props.tempUnit);
         const chartLabel = getHourlyLabel(hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0));
         displayWeatherInfo = (
           <ScrollView
@@ -64,14 +65,15 @@ class Hourly extends Component {
               indicatorStyle="white"
               renderItem={({item}) => 
                 <HourlyItem 
-                  time={item.time}
+                  time={convertTimeFormat(item.time, this.props.timeFormat)}
                   summary={item.summary}
                   icon={item.icon}
                   rainProb={item.precipProbability}
                   humidity={item.humidity}
-                  windSpeed={item.windSpeed}
+                  windSpeed={convertWindSpeed(item.windSpeed,this.props.speedUnit)}
+                  speedUnit={this.props.speedUnit}
                   uvIndex={item.uvIndex}
-                  temp={convertTemp(item.temp, this.props.unit)}
+                  temp={convertTemp(item.temp, this.props.tempUnit)}
                   index={item.index}
                 />
               }
@@ -137,7 +139,9 @@ const mapStateToProps = state => {
   return {
     hourlyWeather: state.weatherReducer.hourlyWeather,
     loadingHourlyWeather: state.weatherReducer.loadingHourlyWeather,
-    unit: state.weatherReducer.unit
+    tempUnit: state.weatherReducer.tempUnit,
+    speedUnit: state.weatherReducer.speedUnit,
+    timeFormat: state.weatherReducer.timeFormat
   }
 }
 

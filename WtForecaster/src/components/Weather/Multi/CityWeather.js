@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Animated } from 'react-native';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import { connect } from 'react-redux';
-import {convertTemp} from '../../../utils/convertTemp';
+import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import axios from '../../../utils/axiosConfig';
 
 class CityWeather extends Component {
@@ -61,7 +61,7 @@ class CityWeather extends Component {
         <Text style={styles.date}>{weather.date}</Text>
         <View style={styles.mainDisplay}>
           <WeatherIcon name={weatherIconName[weather.icon]} size={50} color="white" />
-          <Text style={styles.temp}>{convertTemp(weather.temp, this.props.unit)}&#176;</Text>
+          <Text style={styles.temp}>{convertTemp(weather.temp, this.props.tempUnit)}&#176;</Text>
         </View>
         <Text style={styles.summary}>{weather.summary}</Text>
         <View style={styles.detailContainer}>
@@ -77,7 +77,7 @@ class CityWeather extends Component {
         <View style={styles.detailContainer}>
           <View style={styles.detailRow}>
             <WeatherIcon name="wind-turbine" color="white" size={19} />
-            <Text style={styles.detailText}>{weather.windSpeed} mph</Text>
+            <Text style={styles.detailText}>{convertWindSpeed(weather.windSpeed,this.props.speedUnit)} {this.props.speedUnit}</Text>
           </View>
           <View style={styles.detailRow}> 
             <WeatherIcon name="white-balance-sunny" color="white" size={19} />
@@ -153,7 +153,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    unit: state.weatherReducer.unit
+    tempUnit: state.weatherReducer.tempUnit,
+    speedUnit: state.weatherReducer.speedUnit
   }
 }
 

@@ -4,11 +4,14 @@ export {
 
 export {
   fetchCurrentWeather,
-  changeUnit
+  changeTempUnit,
+  changeSpeedUnit,
+  initConfig
 } from './actionCreator/currentWeather';
 
 export {
-  fetchHourlyWeather
+  fetchHourlyWeather,
+  changeTimeFormat
 } from './actionCreator/hourlyWeather';
 
 export {
