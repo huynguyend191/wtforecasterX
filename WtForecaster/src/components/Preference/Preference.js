@@ -223,7 +223,6 @@ class Preference extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
     paddingHorizontal: 7
   },
   userContainer: {
@@ -235,6 +234,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     marginBottom: 20,
+    marginTop: 20,
   },
   userInfo: {
     display: 'flex',
