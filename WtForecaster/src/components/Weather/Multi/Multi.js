@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, FlatList, Modal, TouchableWithoutFeedback, TouchableOpacity, AsyncStorage, RefreshControl, ScrollView, ActivityIndicator} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Modal, TouchableWithoutFeedback, TouchableOpacity, AsyncStorage, RefreshControl, ScrollView, Alert} from 'react-native';
 import SearchCity from './SearchCity';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CityWeather from './CityWeather';
@@ -44,14 +44,31 @@ class Multi extends Component {
       });
     }
   }
-  removeCity = async (index) => {
-    const cities = this.state.cities;
-    const newCities = cities.slice(0, index).concat(cities.slice(index + 1, cities.length));
-    await AsyncStorage.clear();
-    await AsyncStorage.setItem('cities', JSON.stringify(newCities));
-    this.setState({
-      cities: newCities
-    })
+  removeCity = (index) => {
+    Alert.alert(
+      'Confirm Deletion',
+      'Delete this city?',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes', 
+          onPress: async () => {
+            const cities = this.state.cities;
+            const newCities = cities.slice(0, index).concat(cities.slice(index + 1, cities.length));
+            await AsyncStorage.clear();
+            await AsyncStorage.setItem('cities', JSON.stringify(newCities));
+            this.setState({
+              cities: newCities
+            })
+          },
+          style: 'destructive'
+        },
+      ],
+      {cancelable: false},
+    );
   }
 
 

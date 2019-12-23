@@ -15,9 +15,9 @@ export const convertWindSpeed = (speed, unit) => {
 export const convertTimeFormat = (time , format) => {
   if (format === '12h') {
     let hour = new Date(time).getHours();
-    let AmOrPm = hour >= 12 ? 'PM' : 'AM';
+    let AmOrPm = hour >= 12 ? ' PM' : ' AM';
     hour = (hour % 12) || 12;
-    return hour + ':00 ' + AmOrPm;
+    return hour + AmOrPm;
   }
   return new Date(time).getHours() + ':00';
 } 

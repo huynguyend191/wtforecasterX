@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopColor: 'white',
     borderTopWidth: 1,
-    paddingTop: 20,
+    paddingTop: 15,
     marginTop: 20
   },
   aboutText: {
