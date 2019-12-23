@@ -101,7 +101,7 @@ class Preference extends Component {
     ];
     const timeFormats = [
       {label: '24:00', value: '24h'},
-      {label: '12:00', value: '12h'}
+      {label: 'AM', value: '12h'}
     ]
     let userProfile = (
       <View style={styles.userContainer}>

@@ -15,14 +15,22 @@ export const getHourlyData = (weatherInfo, unit) => {
 
 export const getHourlyLabel = (weatherInfo, timeFormat) => {
   return { x: [
-    new Date(weatherInfo[0].time).getHours() + ':00', 
-    new Date(weatherInfo[1].time).getHours() + ':00', 
-    new Date(weatherInfo[2].time).getHours() + ':00', 
-    new Date(weatherInfo[3].time).getHours() + ':00', 
-    new Date(weatherInfo[4].time).getHours() + ':00', 
-    new Date(weatherInfo[5].time).getHours() + ':00', 
-    new Date(weatherInfo[6].time).getHours() + ':00', 
-    new Date(weatherInfo[7].time).getHours() + ':00', 
+    convertTimeFormat(weatherInfo[0].time, timeFormat),
+    convertTimeFormat(weatherInfo[1].time, timeFormat),
+    convertTimeFormat(weatherInfo[2].time, timeFormat),
+    convertTimeFormat(weatherInfo[3].time, timeFormat),
+    convertTimeFormat(weatherInfo[4].time, timeFormat),
+    convertTimeFormat(weatherInfo[5].time, timeFormat),
+    convertTimeFormat(weatherInfo[6].time, timeFormat),
+    convertTimeFormat(weatherInfo[7].time, timeFormat),
+    // new Date(weatherInfo[0].time).getHours() + ':00', 
+    // new Date(weatherInfo[1].time).getHours() + ':00', 
+    // new Date(weatherInfo[2].time).getHours() + ':00', 
+    // new Date(weatherInfo[3].time).getHours() + ':00', 
+    // new Date(weatherInfo[4].time).getHours() + ':00', 
+    // new Date(weatherInfo[5].time).getHours() + ':00', 
+    // new Date(weatherInfo[6].time).getHours() + ':00', 
+    // new Date(weatherInfo[7].time).getHours() + ':00', 
   ] };
 }
 
