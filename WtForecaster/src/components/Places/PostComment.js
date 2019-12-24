@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, TextInput, ActivityIndicator} from 'react-native';
+import {StyleSheet, Text, View, Button, TextInput, ActivityIndicator, TouchableOpacity} from 'react-native';
 import { GoogleSignin } from 'react-native-google-signin';
 import { AirbnbRating } from 'react-native-ratings';
 import axios from '../../utils/axiosConfig';
@@ -92,24 +92,22 @@ class PostComment extends Component {
     let submit = <ActivityIndicator size="large" color="#4c5bd5"  />
     if (!this.state.isSubmitting) {
       submit = (
-        <View style={styles.submit}>
-            <Button 
-              title="SUBMIT" 
-              color='#516dff'
-              onPress={this.submit}
-              disabled={!this.state.comment.trim().length > 0}
-              />
+        <TouchableOpacity onPress={() => this.submit()} disabled={!this.state.comment.trim().length > 0}>
+          <View style={styles.submit}>
+            <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold'}}>SUBMIT</Text>
           </View>
+        </TouchableOpacity>
       )
     }
     let commentSection = (
       <View>
-        <Text style={{marginBottom: 10, color: "##263144", fontSize: 16}}>Please sign in with Google to comment</Text>
-        <Button 
-          onPress={this.signIn} title="Sign In" 
-          disabled={this.state.signInLoading} 
-          color='#516dff'
-        />
+        <Text style={{marginBottom: 10, color: "#263144", fontSize: 16}}>Please sign in with Google to comment</Text>
+        <TouchableOpacity onPress={this.signIn} disabled={this.state.signInLoading} >
+          <View style={styles.signInButton}>
+            <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold'}}>SIGN IN</Text>
+          </View>
+        </TouchableOpacity>
+        
       </View>
     )
     if (this.state.user) {
@@ -174,7 +172,24 @@ const styles = StyleSheet.create({
   submit: {
     marginTop: 10,
     width: 280,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    borderRadius: 20,
+    backgroundColor: '#51b374',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'white',
+    justifyContent: 'center'
+  },
+  signInButton: {
+    marginTop: 10,
+    width: 280,
+    alignSelf: 'center',
+    borderRadius: 20,
+    backgroundColor: '#516dff',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'white',
+    justifyContent: 'center'
   }
 });
 

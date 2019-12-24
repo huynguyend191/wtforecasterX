@@ -75,7 +75,7 @@ class Comment extends Component {
     return (
         <View style={styles.comment}>
             <View style={styles.commentHeader}>
-                <Text style={styles.username}>{comment.email === this.props.email ? `${comment.user}(You)` : comment.user}</Text>
+                <Text style={styles.username}>{comment.email === this.props.email ? `${comment.user} (You)` : comment.user}</Text>
                 <View style={{display: 'flex', flexDirection: 'row',}}>
                   <AirbnbRating 
                     showRating={false}
@@ -120,7 +120,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 20
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#ced4e7',
   },
   deleteComment: {
     color: 'red',

@@ -84,12 +84,12 @@ class Multi extends Component {
             keyExtractor={(item, index) => index.toString()}
             showsVerticalScrollIndicator={false}
             renderItem={({item, index}) =>
-              <TouchableOpacity onLongPress={() => this.removeCity(index)}>
-                <CityWeather 
-                  city={item.city}
-                  coords={item.coordinate}
-                />
-              </TouchableOpacity> 
+              <CityWeather 
+                city={item.city}
+                coords={item.coordinate}
+                removeCity={this.removeCity}
+                cityIndex={index}
+              />
             }
           />
         )

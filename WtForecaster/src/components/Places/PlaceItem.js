@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet , Image, Animated, TouchableWithoutFeedback, FlatList, Button } from 'react-native';
+import { View, Text, StyleSheet , Image, Animated, TouchableWithoutFeedback, FlatList, TouchableOpacity } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Comment from './Comment';
@@ -42,9 +42,12 @@ class PlaceItem extends Component {
               <Comment email={this.props.email} comment={item} placeId={this.props.placeInfo._id} onReload={this.props.onReload}/>
             }
           />
-          <View style={styles.addCmtButton}>
-            <Button title="ADD COMMENT" color='#516dff' onPress={() => this.addComment(place)} />
-          </View>
+          <TouchableOpacity onPress={() => this.addComment(place)}>
+            <View style={styles.addCmtButton}>
+              <Text style={{color: '#263144', textAlign: 'center', fontWeight: 'bold'}}>ADD COMMENT</Text>
+            </View>
+          </TouchableOpacity>
+         
 
         </View>
       )
@@ -140,9 +143,14 @@ const styles = StyleSheet.create({
   },
   addCmtButton: {
     width: 180,
-    borderRadius: 10,
     alignSelf: 'center',
-    marginTop: 10
+    marginTop: 10,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#263144',
+    justifyContent: 'center'
   }
 })
 

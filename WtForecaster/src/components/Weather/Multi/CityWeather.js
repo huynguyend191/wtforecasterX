@@ -56,14 +56,16 @@ class CityWeather extends Component {
     const weather = this.state.weather;
     return (
       <Animated.View style={[styles.dailyItem, { opacity: this.state.scaleValue }]}>
-         
+        <View style={{alignSelf: 'flex-end'}}>
+          <WeatherIcon name="close" size={16} color='#263144' onPress={() => this.props.removeCity(this.props.cityIndex)} />
+        </View>
         <View style={styles.mainDisplay}>
           <WeatherIcon name={weatherIconName[weather.icon]} size={65} color="#263144" />
           <View style={styles.info}>
             <View style={styles.locationContainer}>
               <WeatherIcon name="map-marker" size={16} color="#263144" />
               <Text style={styles.location}>{this.props.city}</Text>
-            </View>     
+            </View>  
             <View style={styles.tempContainer}>
               <Text style={styles.tempMax}>{convertTemp(weather.temp, this.props.tempUnit)}&#176;</Text>
               <Text style={styles.tempMin}>{convertTemp(weather.apparentTemp, this.props.tempUnit)}&#176;</Text>
@@ -102,7 +104,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 10,
     marginHorizontal: 5,
-    padding: 10,
+    paddingTop: 5,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
     elevation: 5
   },
   date: {

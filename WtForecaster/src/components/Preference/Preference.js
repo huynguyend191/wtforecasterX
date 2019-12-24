@@ -154,7 +154,7 @@ class Preference extends Component {
             onPress={value => this.changeTemperatureUnit(value)}
             initial={this.props.tempUnit === 'C' ? 0 : 1}
             borderRadius={2}
-            buttonColor={'#54B374'}
+            buttonColor={'#51b374'}
             animationDuration={50}
             hasPadding={false}
             height={25}
@@ -172,7 +172,7 @@ class Preference extends Component {
           <SwitchSelector
             onPress={value => this.changeWindSpeedUnit(value)}
             borderRadius={2}
-            buttonColor={'#54B374'}
+            buttonColor={'#51b374'}
             initial={this.props.speedUnit === 'mph' ? 0 : 1}
             animationDuration={50}
             hasPadding={false}
@@ -193,7 +193,7 @@ class Preference extends Component {
             onPress={value => this.changeTimeFormat(value)}
             borderRadius={2}
             initial={this.props.timeFormat === '24h' ? 0 : 1}
-            buttonColor={'#54B374'}
+            buttonColor={'#51b374'}
             animationDuration={50}
             hasPadding={false}
             height={25}

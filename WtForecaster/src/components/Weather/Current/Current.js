@@ -120,7 +120,7 @@ class Current extends Component {
             style={styles.weather}
           >
             <View>
-              <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.error}>Error connection. Please refresh.</Text>
             </View>
           </ScrollView>
           
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
   weatherContainer: {
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     flex: 1,
     // paddingHorizontal: 20
   },
