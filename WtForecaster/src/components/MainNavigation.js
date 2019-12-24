@@ -24,7 +24,7 @@ const MainNavigation = createBottomTabNavigator({
       } else if (routeName === 'News') {
         iconName = `newspaper`;
       } else if (routeName === 'Places') {
-        iconName = 'map-search'
+        iconName = 'map-marker'
       }
       else if (routeName === 'Preference') {
         iconName = 'account-settings'
@@ -33,8 +33,8 @@ const MainNavigation = createBottomTabNavigator({
     },
   }),
   tabBarOptions: {
-    activeTintColor: 'blue',
-    inactiveTintColor: 'gray',
+    activeTintColor: '#007FFF',
+    inactiveTintColor: '#263144',
   },
 }
 );

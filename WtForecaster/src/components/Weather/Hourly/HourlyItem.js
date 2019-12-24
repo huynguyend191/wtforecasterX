@@ -20,23 +20,23 @@ class HourlyItem extends Component {
       <Animated.View style={[styles.hourlyItem, { opacity: this.state.scaleValue }]}>
         <Text style={styles.hour}>{this.props.time}</Text>
         <View style={styles.tempContainer}>
-          <WeatherIcon name={weatherIconName[this.props.icon]} size={40} color="white" />
+          <WeatherIcon name={weatherIconName[this.props.icon]} size={40} color="#263144" />
           <Text style={styles.temp}>{this.props.temp}&#176;</Text>
         </View>
         <View style={styles.detailRow}>
-            <WeatherIcon name="weather-rainy" color="white" size={19} />
+            <WeatherIcon name="weather-rainy" color="gray" size={19} />
             <Text style={styles.detailText}>{Math.round(Number(this.props.rainProb) * 100)}%</Text>
           </View>
         <View style={styles.detailRow}>
-          <WeatherIcon name="water-percent" color="white" size={19} />
+          <WeatherIcon name="water-percent" color="gray" size={19} />
           <Text style={styles.detailText}>{Math.round(Number(this.props.humidity) * 100)}%</Text>
         </View>
         <View style={styles.detailRow}>
-          <WeatherIcon name="wind-turbine" color="white" size={19} />
+          <WeatherIcon name="wind-turbine" color="gray" size={19} />
           <Text style={styles.detailText}>{this.props.windSpeed} {this.props.speedUnit}</Text>
         </View>
         <View style={styles.detailRow}> 
-          <WeatherIcon name="white-balance-sunny" color="white" size={19} />
+          <WeatherIcon name="white-balance-sunny" color="gray" size={19} />
           <Text style={styles.detailText}>{this.props.uvIndex}</Text>
         </View>
         <View style={styles.summaryContainer}>
@@ -49,17 +49,18 @@ class HourlyItem extends Component {
 
 const styles = StyleSheet.create({
   hourlyItem: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 3,
+    backgroundColor: '#f7f7f7',
+    borderRadius: 10,
     marginBottom: 10,
     padding: 10,
     marginHorizontal: 3,
     width: 110,
-    paddingVertical: 20
+    paddingVertical: 10,
+    elevation: 5,
   },
   hour: {
     textAlign: 'center',
-    color: 'white',
+    color: '#263144',
     marginBottom: 20,
     fontSize: 16,
     fontWeight: 'bold'
@@ -70,12 +71,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'white',
+    borderBottomColor: '#ffffff',
     paddingBottom: 20,
     marginBottom: 20
   },
   temp: {
-    color: 'white',
+    color: '#263144',
     fontSize: 28,
     marginLeft: 3
   },
@@ -86,16 +87,16 @@ const styles = StyleSheet.create({
     marginBottom: 7
   },
   detailText: {
-    color: 'white'
+    color: 'gray'
   },
   summaryContainer: {
     borderTopWidth: 1,
-    borderTopColor: 'white',
+    borderTopColor: '#ffffff',
     marginTop: 13,
     paddingTop: 15
   },
   summary: {
-    color: 'white',
+    color: '#263144',
     textAlign: 'center'
   }
 })

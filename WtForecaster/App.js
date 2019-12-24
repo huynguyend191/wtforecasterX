@@ -1,25 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, AsyncStorage} from 'react-native';
+import {StyleSheet, AsyncStorage, View} from 'react-native';
 // import WeatherForecast from './src/components/WeatherForecast';
 import MainNavigation from './src/components/MainNavigation';
-import LinearGradient from 'react-native-linear-gradient';
 import { GoogleSignin } from 'react-native-google-signin';
 import { connect } from 'react-redux';
 import { initConfig } from './src/store/actions';
 
 class App extends Component {
-  state = {
-    // backgroundColor: ['#44329B', '#4c9dd5', '#4ac2d2']
-    backgroundColor: ['#36287c', '#454879', '#567AAC']
-  }
-  changeColor = () => {
-    const currentHour = new Date(Date.now()).getHours();
-    if (currentHour > 18 || currentHour < 5) {
-      this.setState({
-        backgroundColor: ['#36287c', '#454879', '#567AAC']
-      })
-    }
-  }
   initConfig = async () => {
     let config = {};
     try {
@@ -35,7 +22,6 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.changeColor();
     this.initConfig();
     console.disableYellowBox = true;
     GoogleSignin.configure({
@@ -45,9 +31,9 @@ class App extends Component {
 
   render() {
     return (
-      <LinearGradient colors={this.state.backgroundColor} style={styles.container}>
+      <View style={styles.container}>
         <MainNavigation />
-      </LinearGradient>
+      </View>
     );
   }
 }
@@ -58,7 +44,8 @@ const mapDispatchToProps = dispatch => {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#f5f6f6'
   }
 });
 

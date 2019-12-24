@@ -29,7 +29,7 @@ class Current extends Component {
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="large" color="#263144" />
       </View>
     );
     let currentLocation = (
@@ -40,7 +40,7 @@ class Current extends Component {
         const currentCity = this.props.currentCity;
         currentLocation = (
           <View style={styles.locationContainer}>
-            <WeatherIcon name="map-marker" size={19} color="white" />
+            <WeatherIcon name="map-marker" size={19} color="#263144" />
             <Text style={styles.location}>{currentCity}</Text>
           </View>      
         )
@@ -61,43 +61,47 @@ class Current extends Component {
             {currentLocation}
             <Text style={styles.date}>{new Date(currentWeather.current.time).toDateString()}</Text>
             <View style={styles.mainDisplay}>
-              <WeatherIcon name={weatherIconName[currentWeather.current.icon]} size={120} color="white" />
-              <Text style={styles.temp}>{convertTemp(currentWeather.current.temp, this.props.tempUnit)}&#176;</Text>
+              <View style={styles.displayTemp}>
+                <Text style={styles.temp}>{convertTemp(currentWeather.current.temp, this.props.tempUnit)}&#176;</Text>
+                <View><WeatherIcon name={weatherIconName[currentWeather.current.icon]} size={60} color="#263144" /></View>
+              </View>
+              <View style={styles.displayRtemp}>
+                <Text style={styles.realTemp}>Real Feel: {convertTemp(currentWeather.current.apparentTemp, this.props.tempUnit)}&#176;</Text>
+                <Text style={styles.summary}>{currentWeather.current.summary}</Text>
+              </View>
             </View>
-            <Text style={styles.realTemp}>Real Feel: {convertTemp(currentWeather.current.apparentTemp, this.props.tempUnit)}&#176;</Text>
-            <Text style={styles.summary}>{currentWeather.current.summary}</Text>
             <View style={styles.detailInfo}>
               <View style={styles.detailItem}>
                 <View style={styles.detailLabel}> 
-                  <WeatherIcon name="water-percent" color="white" size={19} />
+                  <WeatherIcon name="water-percent" color="#263144" size={19} />
                   <Text style={styles.detailLabelText}>Humidity</Text>
                 </View>
                 <Text style={styles.detailData}>{Math.round(Number(currentWeather.current.humidity) * 100)}%</Text>
               </View>
               <View style={styles.detailItem}>
                 <View style={styles.detailLabel}> 
-                  <WeatherIcon name="white-balance-sunny" color="white" size={19} />
+                  <WeatherIcon name="white-balance-sunny" color="#263144" size={19} />
                   <Text style={styles.detailLabelText}>UV index</Text>
                 </View>
                 <Text style={styles.detailData}>{currentWeather.current.uvIndex}</Text>
               </View>
               <View style={styles.detailItem}>
                 <View style={styles.detailLabel}> 
-                  <WeatherIcon name="wind-turbine" color="white" size={19} />
+                  <WeatherIcon name="wind-turbine" color="#263144" size={19} />
                   <Text style={styles.detailLabelText}>Wind speed</Text>
                 </View>
                 <Text style={styles.detailData}>{convertWindSpeed(currentWeather.current.windSpeed,this.props.speedUnit)} {this.props.speedUnit}</Text>
               </View>
               <View style={styles.detailItem}>
                 <View style={styles.detailLabel}>  
-                  <WeatherIcon name="weather-rainy" color="white" size={19} />
+                  <WeatherIcon name="weather-rainy" color="#263144" size={19} />
                   <Text style={styles.detailLabelText}>Rain probability</Text>
                 </View>
                 <Text style={styles.detailData}>{Math.round(Number(currentWeather.current.precipProbability) * 100)}%</Text>
               </View>
               <View style={styles.detailItem}>
                 <View style={styles.detailLabel}> 
-                  <WeatherIcon name="gauge" color="white" size={19} />
+                  <WeatherIcon name="gauge" color="#263144" size={19} />
                   <Text style={styles.detailLabelText}>Pressure</Text>
                 </View>
                 <Text style={styles.detailData}>{currentWeather.current.pressure} Pa</Text>
@@ -153,40 +157,41 @@ const styles = StyleSheet.create({
   weatherContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
+    flex: 1,
+    paddingHorizontal: 18
   },
   weather: {
     flex: 1
   },
   mainDisplay: {
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginVertical: 20,
+    flex: 1,
     width: '100%',
-    marginBottom: 20
+    backgroundColor: '#f7f7f7',
+    elevation: 5,
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    paddingTop: 10
   },
   temp: {
-    color: 'white',
-    fontSize: 90,
-    marginLeft: 20
+    color: '#263144',
+    fontSize: 87,
+    padding: 0,
+    includeFontPadding: false
   },
   summary: {
-    color: 'white',
-    textAlign: 'center',
-    marginTop: 30,
-    fontSize: 18
+    color: '#263144',
+    fontSize: 14
   },
   realTemp: {
-    color: 'white',
-    textAlign: 'right',
-    fontSize: 13
+    color: '#263144',
+    fontSize: 14
   },
   detailInfo: {
-    borderTopWidth: 1,
-    borderTopColor: 'white',
-    marginTop: 30,
-    paddingVertical: 20
+    marginTop: 20,
+    padding: 20
   },
   detailItem: {
     display: 'flex',
@@ -199,17 +204,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   detailLabelText: {
-    color: 'white',
+    color: '#263144',
     marginLeft: 5
   },
   detailData: {
-    color: 'white',
+    color: '#263144',
   },
   date: {
-    color: 'white',
+    color: '#263144',
     textAlign: 'center',
-    fontSize: 16,
-    marginBottom: 10,
+    fontSize: 14,
+    marginBottom: 30,
   },
   locationContainer: {
     height: 25,
@@ -217,22 +222,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
     marginTop: 45
   },
   location: {
-    color: 'white',
-    fontSize: 18,
-    marginLeft: 3
+    color: '#263144',
+    fontSize: 20,
+    marginLeft: 3,
+    fontWeight: 'bold'
   },
   error: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
-    marginTop: 250
+    marginTop: 250,
+    textAlign: 'center'
   },
   loadingText: {
-    color: 'white',
+    color: '#263144',
+    marginBottom: 5,
+    textAlign: 'center'
+  },
+  displayTemp: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 5
+  },
+  displayRtemp: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 

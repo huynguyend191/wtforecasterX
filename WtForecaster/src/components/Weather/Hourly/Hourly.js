@@ -29,7 +29,7 @@ class Hourly extends Component {
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="large" color="#263144" />
       </View>
     );
     if (!this.props.loadingHourlyWeather ) {
@@ -49,12 +49,12 @@ class Hourly extends Component {
           >
             <View style={styles.hourlySummary}>
               <View style={styles.summaryTitleContainer}>
-                <WeatherIcon name="clock-outline" size={19} color="white" />
+                <WeatherIcon name="clock-outline" size={19} color="#263144" />
                 <Text style={styles.summaryTitle}>HOURLY SUMMARY</Text>
               </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{hourlyWeather.hourlySummary}</Text>
-                <WeatherIcon name={weatherIconName[hourlyWeather.hourlyIcon]} size={50} color="white" />
+                <WeatherIcon name={weatherIconName[hourlyWeather.hourlyIcon]} size={50} color="#263144" />
               </View>
             </View>
             <FlatList 
@@ -62,7 +62,7 @@ class Hourly extends Component {
               horizontal
               data={hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0)} //take every 2 hour
               keyExtractor={(item, index) => item.time}
-              indicatorStyle="white"
+              indicatorStyle="#263144"
               renderItem={({item}) => 
                 <HourlyItem 
                   time={convertTimeFormat(item.time, this.props.timeFormat)}
@@ -80,27 +80,27 @@ class Hourly extends Component {
             />
             <View style={styles.container} pointerEvents='none'>
               <View style={styles.chartNameContainer}>
-                <WeatherIcon name="chart-line" size={17} color="white" />
+                <WeatherIcon name="chart-line" size={17} color="#263144" />
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>   
               <VictoryChart>
                 <VictoryLine
                   style={{
-                    data: { stroke: "white", color: "white" },
+                    data: { stroke: "#ea8655", color: "#ea8655" },
                   }}
                   data={chartData}
                   categories={chartLabel}
                 />
                 <VictoryAxis
                   style={{
-                    axis: {stroke: "white"},
-                    tickLabels: {fontSize: 10, fill: "white"},
+                    axis: {stroke: "#263144"},
+                    tickLabels: {fontSize: 10, fill: "#263144"},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
-                    axis: {stroke: "white"},
-                    tickLabels: {fontSize: 10, fill: "white"}
+                    axis: {stroke: "#263144"},
+                    tickLabels: {fontSize: 10, fill: "#263144"}
                   }}
                 />
                 
@@ -158,15 +158,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     flex: 1,
-    paddingHorizontal: 5
+    paddingHorizontal: 20
   },
   weather: {
     flex: 1,
   },
   hourlySummary: {
     marginVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
     width: '100%',
     flex: 1,
     display: 'flex',
@@ -174,7 +172,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   summaryTitle: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
     textAlign: 'center',
     marginLeft: 4
@@ -186,17 +184,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   summary: {
-    color: 'white',
+    color: '#263144',
     flexWrap: 'wrap',
     width: '80%',
   },
   error: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
     marginTop: 250
   },
   loadingText: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5
   },
   container: {
@@ -204,9 +202,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     marginBottom: 20,
-    borderTopWidth: 1,
-    borderTopColor: 'white',
-    marginTop: 5
+    marginTop: 18
   },
   summaryTitleContainer: {
     display: 'flex',
@@ -216,7 +212,7 @@ const styles = StyleSheet.create({
   },
   chartName: {
     textAlign: 'center',
-    color: 'white',
+    color: '#263144',
     fontSize: 16,
     marginLeft: 3
   },
