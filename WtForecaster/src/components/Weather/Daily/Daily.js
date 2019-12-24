@@ -29,7 +29,7 @@ class Daily extends Component {
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="large" color="#263144" />
       </View>
     );
     if (!this.props.loadingDailyWeather ) {
@@ -50,12 +50,12 @@ class Daily extends Component {
           >
             <View style={styles.dailySummary}>
               <View style={styles.summaryTitleContainer}>
-                <WeatherIcon name="calendar-week" size={19} color="white" />
+                <WeatherIcon name="calendar-week" size={19} color="#263144" />
                 <Text style={styles.summaryTitle}>DAILY SUMMARY</Text>
               </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{dailyWeather.dailySummary}</Text>
-                <WeatherIcon name={weatherIconName[dailyWeather.dailyIcon]} size={50} color="white" />
+                <WeatherIcon name={weatherIconName[dailyWeather.dailyIcon]} size={50} color="#263144" />
               </View>
             </View>
             <FlatList 
@@ -63,7 +63,7 @@ class Daily extends Component {
               data={dailyWeather.dailyForecast}
               keyExtractor={(item, index) => item.date}
               // showsHorizontalScrollIndicator={false}
-              indicatorStyle='white'
+              indicatorStyle='#263144'
               horizontal
               renderItem={({item}) => 
                 <DailyItem 
@@ -83,33 +83,33 @@ class Daily extends Component {
             />
             <View style={styles.container} pointerEvents='none'>
               <View style={styles.chartNameContainer}>
-                <WeatherIcon name="chart-areaspline" size={17} color="white" />
+                <WeatherIcon name="chart-areaspline" size={17} color="#263144" />
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>  
               <VictoryChart>
                 <VictoryArea
                   style={{
-                    data: { stroke: "#C3DFEB", color: "white", fill: "#4c9dd5"}, 
+                    data: { stroke: "#C3DFEB", color: "#263144", fill: "#4c9dd5"}, 
                   }}
                   categories={chartLabel}
                   data={maxTempData}
                 />
                  <VictoryArea
                   style={{
-                    data: { color: "white", fill: "#C3DFEB"},
+                    data: { color: "#263144", fill: "#C3DFEB"},
                   }}
                   data={minTempData}
                 />
                 <VictoryAxis
                   style={{
-                    axis: {stroke: "white"},
-                    tickLabels: {fontSize: 10, fill: "white"},
+                    axis: {stroke: "#263144"},
+                    tickLabels: {fontSize: 10, fill: "#263144"},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
-                    axis: {stroke: "white"},
-                    tickLabels: {fontSize: 10, fill: "white"}
+                    axis: {stroke: "#263144"},
+                    tickLabels: {fontSize: 10, fill: "#263144"}
                   }}
                 />
               </VictoryChart>
@@ -171,8 +171,6 @@ const styles = StyleSheet.create({
   },
   dailySummary: {
     marginVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
     width: '100%',
     flex: 1,
     display: 'flex',
@@ -180,7 +178,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   summaryTitle: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
     textAlign: 'center',
     marginLeft: 4
@@ -192,17 +190,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   summary: {
-    color: 'white',
+    color: '#263144',
     flexWrap: 'wrap',
     width: '80%',
   },
   error: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
     marginTop: 250
   },
   loadingText: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5
   },
   container: {
@@ -210,8 +208,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     marginBottom: 20,
-    borderTopWidth: 1,
-    borderTopColor: 'white',
     marginTop: 5
   },
   summaryTitleContainer: {
@@ -222,7 +218,7 @@ const styles = StyleSheet.create({
   },
   chartName: {
     textAlign: 'center',
-    color: 'white',
+    color: '#263144',
     fontSize: 16,
     marginLeft: 3
   },

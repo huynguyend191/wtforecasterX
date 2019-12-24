@@ -17,29 +17,34 @@ class DailyItem extends Component {
   render() {
     return (
       <Animated.View style={[styles.dailyItem, { opacity: this.state.scaleValue }]}>
-        <Text style={styles.date}>{this.props.date}</Text>
         <View style={styles.mainDisplay}>
-          <WeatherIcon name={weatherIconName[this.props.icon]} size={50} color="white" />
-          <Text style={styles.temp}>{this.props.tempMax}&#176; | {this.props.tempMin}&#176;</Text>
+          <WeatherIcon name={weatherIconName[this.props.icon]} size={65} color="#263144" />
+          <View style={styles.info}>
+            <Text style={styles.date}>{this.props.date}</Text>
+            <View style={styles.tempContainer}>
+              <Text style={styles.tempMax}>{this.props.tempMax}&#176;</Text>
+              <Text style={styles.tempMin}>{this.props.tempMin}&#176;</Text>
+            </View>
+            <View>
+              <Text style={styles.summary}>{this.props.summary}</Text>
+            </View>
+          </View>
         </View>
-        <Text style={styles.summary}>{this.props.summary}</Text>
         <View style={styles.detailContainer}>
           <View style={styles.detailRow}>
-            <WeatherIcon name="weather-rainy" color="white" size={19} />
+            <WeatherIcon name="weather-rainy" color="#263144" size={19} />
             <Text style={styles.detailText}>{Math.round(Number(this.props.rainProb) * 100)}%</Text>
           </View>
           <View style={styles.detailRow}>
-            <WeatherIcon name="water-percent" color="white" size={19} />
+            <WeatherIcon name="water-percent" color="#263144" size={19} />
             <Text style={styles.detailText}>{Math.round(Number(this.props.humidity) * 100)}%</Text>
           </View>
-        </View>
-        <View style={styles.detailContainer}>
           <View style={styles.detailRow}>
-            <WeatherIcon name="wind-turbine" color="white" size={19} />
+            <WeatherIcon name="wind-turbine" color="#263144" size={19} />
             <Text style={styles.detailText}>{this.props.windSpeed} {this.props.speedUnit}</Text>
           </View>
           <View style={styles.detailRow}> 
-            <WeatherIcon name="white-balance-sunny" color="white" size={19} />
+            <WeatherIcon name="white-balance-sunny" color="#263144" size={19} />
             <Text style={styles.detailText}>{this.props.uvIndex}</Text>
           </View>
         </View>
@@ -50,51 +55,63 @@ class DailyItem extends Component {
 
 const styles = StyleSheet.create({
   dailyItem: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 5,
+    backgroundColor: '#f7f7f7',
+    borderRadius: 10,
     marginBottom: 10,
-    padding: 10,
+    padding: 20,
     marginHorizontal: 5,
-    width: 310,
+    width: 312,
+    elevation: 5
   },
   date: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: 'white',
+    fontSize: 18,
+    color: '#263144',
     fontWeight: 'bold'
   },
   summary: {
-    textAlign: 'center',
     fontSize: 12,
-    color: 'white',
-    marginVertical: 3
+    color: 'gray',
+    marginVertical: 3,
+    flexWrap: 'wrap',
   },
   mainDisplay: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-around',
+    marginBottom: 5
   },
-  temp: {
-    color: 'white',
-    fontSize: 35,
-    marginLeft: 20
+  tempMax: {
+    color: '#263144',
+    fontSize: 48,
+  },
+  tempMin: {
+    color: '#ced4e7',
+    fontSize: 48,
+    marginLeft: 10
   },
   detailContainer: {
     alignItems: 'center',
     margin: 5,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'    
+    justifyContent: 'center'    
   },
   detailRow: {
     display: 'flex',
     flexDirection: 'row',
-    width: '25%'
+    marginHorizontal: 10
   },
   detailText: {
-    color: 'white',
-    marginLeft: 10
+    color: '#263144',
+    marginLeft: 5
+  },
+  tempContainer: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  info: {
+    width: 147
   }
 })
 
