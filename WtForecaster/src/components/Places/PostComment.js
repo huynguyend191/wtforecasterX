@@ -30,7 +30,7 @@ class PostComment extends Component {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (f.e. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        alert('Something went wrong, please try again');
+        alert('Something went wrong, please stry again');
       // play services not available or outdated
       } else {
         alert('Something went wrong, please try again');

@@ -119,8 +119,9 @@ class Hourly extends Component {
             }
             style={styles.errorContainer}
           >
-            <View>
+            <View style={styles.errorView}>
               <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.guide}>Swipe down to refresh</Text>
             </View>
           </ScrollView>
         )
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 14,
     marginTop: 250
   },
   loadingText: {
@@ -226,6 +227,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10
+  },
+  guide: {
+    color: 'white',
+    fontSize: 14,
+    marginTop: 12
+  },    
+  errorView: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
