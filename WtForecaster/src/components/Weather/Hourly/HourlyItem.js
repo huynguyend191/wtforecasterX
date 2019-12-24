@@ -24,19 +24,19 @@ class HourlyItem extends Component {
           <Text style={styles.temp}>{this.props.temp}&#176;</Text>
         </View>
         <View style={styles.detailRow}>
-            <WeatherIcon name="weather-rainy" color="gray" size={19} />
+            <WeatherIcon name="weather-rainy" color="#263144" size={19} />
             <Text style={styles.detailText}>{Math.round(Number(this.props.rainProb) * 100)}%</Text>
           </View>
         <View style={styles.detailRow}>
-          <WeatherIcon name="water-percent" color="gray" size={19} />
+          <WeatherIcon name="water-percent" color="#263144" size={19} />
           <Text style={styles.detailText}>{Math.round(Number(this.props.humidity) * 100)}%</Text>
         </View>
         <View style={styles.detailRow}>
-          <WeatherIcon name="wind-turbine" color="gray" size={19} />
+          <WeatherIcon name="wind-turbine" color="#263144" size={19} />
           <Text style={styles.detailText}>{this.props.windSpeed} {this.props.speedUnit}</Text>
         </View>
         <View style={styles.detailRow}> 
-          <WeatherIcon name="white-balance-sunny" color="gray" size={19} />
+          <WeatherIcon name="white-balance-sunny" color="#263144" size={19} />
           <Text style={styles.detailText}>{this.props.uvIndex}</Text>
         </View>
         <View style={styles.summaryContainer}>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   hourlyItem: {
     backgroundColor: '#f7f7f7',
     borderRadius: 10,
-    marginBottom: 10,
+    marginVertical: 10,
     padding: 10,
     marginHorizontal: 3,
     width: 110,
@@ -87,12 +87,13 @@ const styles = StyleSheet.create({
     marginBottom: 7
   },
   detailText: {
-    color: 'gray'
+    color: '#263144',
+    fontWeight: '100'
   },
   summaryContainer: {
     borderTopWidth: 1,
     borderTopColor: '#ffffff',
-    marginTop: 13,
+    marginTop: 5,
     paddingTop: 15
   },
   summary: {

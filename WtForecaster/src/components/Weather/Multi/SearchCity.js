@@ -60,7 +60,8 @@ class SearchCity extends Component {
             round        
             onChangeText={text => this.searchFilterFunction(text)}
             autoCorrect={false}         
-            value={this.state.value}    
+            value={this.state.value}   
+            style={{width: '100%'}} 
           />   
         </View>
        
@@ -80,14 +81,15 @@ class SearchCity extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 400,
-    width: 300,
-    backgroundColor: '#fff', padding: 20,
+    width: 320,
+    backgroundColor: '#f5f6f6', 
+    padding: 20,
     borderRadius: 10
   },
   cityContainer: {
     padding: 2,
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
     height: 40,
     display: 'flex',
     justifyContent: 'center'
@@ -98,7 +100,12 @@ const styles = StyleSheet.create({
   searchBar: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    borderRadius: 18,
+    paddingLeft: 10,
+    paddingVertical: 0,
+    height: 40
   }
 });
 

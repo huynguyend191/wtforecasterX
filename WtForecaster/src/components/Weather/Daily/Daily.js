@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     flex: 1,
-    paddingHorizontal: 5
+    paddingHorizontal: 20
   },
   weather: {
     flex: 1,

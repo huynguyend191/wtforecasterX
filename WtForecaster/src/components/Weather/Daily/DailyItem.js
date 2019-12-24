@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 20,
     marginHorizontal: 5,
+    marginVertical: 5,
     width: 312,
     elevation: 5
   },
@@ -70,9 +71,10 @@ const styles = StyleSheet.create({
   },
   summary: {
     fontSize: 12,
-    color: 'gray',
+    color: '#263144',
     marginVertical: 3,
     flexWrap: 'wrap',
+    fontWeight: '100'
   },
   mainDisplay: {
     display: 'flex',
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
   tempMin: {
     color: '#ced4e7',
     fontSize: 48,
-    marginLeft: 10
   },
   detailContainer: {
     alignItems: 'center',
@@ -104,11 +105,12 @@ const styles = StyleSheet.create({
   },
   detailText: {
     color: '#263144',
-    marginLeft: 5
+    marginLeft: 3
   },
   tempContainer: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   info: {
     width: 147

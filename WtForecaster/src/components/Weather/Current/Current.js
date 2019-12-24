@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     flex: 1,
-    paddingHorizontal: 18
+    // paddingHorizontal: 20
   },
   weather: {
     flex: 1
@@ -166,14 +166,15 @@ const styles = StyleSheet.create({
   mainDisplay: {
     display: 'flex',
     marginVertical: 20,
+    marginHorizontal: 20,
     flex: 1,
-    width: '100%',
+    width: 324,
     backgroundColor: '#f7f7f7',
     elevation: 5,
     borderRadius: 10,
     paddingHorizontal: 20,
     paddingBottom: 20,
-    paddingTop: 10
+    paddingTop: 10,
   },
   temp: {
     color: '#263144',
@@ -191,7 +192,8 @@ const styles = StyleSheet.create({
   },
   detailInfo: {
     marginTop: 20,
-    padding: 20
+    paddingVertical: 20,
+    paddingHorizontal: 60
   },
   detailItem: {
     display: 'flex',

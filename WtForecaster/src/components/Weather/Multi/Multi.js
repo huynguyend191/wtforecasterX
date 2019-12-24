@@ -134,7 +134,7 @@ class Multi extends Component {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     flex: 1,
   },
   modalContent: {
@@ -148,13 +148,15 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    width: 120,
+    width: 139,
     padding: 5,
     borderColor: 'white',
     borderWidth: 1,
     alignSelf: 'flex-end',
-    borderRadius: 5,
-    marginBottom: 20
+    borderRadius: 10,
+    marginBottom: 20,
+    backgroundColor: '#516dff',
+    justifyContent: 'center'
   },
   addLocationText: {
     color: 'white',
