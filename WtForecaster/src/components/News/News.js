@@ -15,7 +15,7 @@ class News extends Component {
     let displayNews = (
       <View>
         <Text style={styles.loadingText}>Fetching news...</Text>
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="large" color="#263144" />
       </View>
     )
     if (!this.props.loadingNews) {
@@ -55,11 +55,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    paddingTop: 10,
-    paddingHorizontal: 10
+    paddingTop: 26,
+    paddingHorizontal: 14
   },
   loadingText: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5
   }
 });

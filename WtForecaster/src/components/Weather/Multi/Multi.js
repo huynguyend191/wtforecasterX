@@ -67,7 +67,6 @@ class Multi extends Component {
           style: 'destructive'
         },
       ],
-      {cancelable: false},
     );
   }
 
@@ -163,7 +162,7 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
   noLocationText: {
-    color: 'white',
+    color: '#263144',
     fontSize: 18,
     alignSelf: 'center',
     marginTop: '60%'

@@ -137,16 +137,16 @@ class Preference extends Component {
     }
     return (
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
 
         {userProfile}
         <View style={styles.settingTextContainer}>
-          <WeatherIcon name="settings" size={17} color="white" />
+          <WeatherIcon name="settings" size={17} color="#263144" />
           <Text style={styles.setting}>SETTINGS</Text>
         </View>    
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="thermometer" size={19} color="white" />
+            <WeatherIcon name="thermometer" size={19} color="#263144" />
             <Text style={styles.settingLabel}>Temperature Unit</Text>
           </View>
         
@@ -166,7 +166,7 @@ class Preference extends Component {
         </View>
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="speedometer" size={19} color="white" />
+            <WeatherIcon name="speedometer" size={19} color="#263144" />
             <Text style={styles.settingLabel}>Wind Speed Unit</Text>
           </View>
           <SwitchSelector
@@ -185,7 +185,7 @@ class Preference extends Component {
         </View>
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="timer" size={19} color="white" />
+            <WeatherIcon name="timer" size={19} color="#263144" />
             <Text style={styles.settingLabel}>Time Format</Text>
           </View>
 
@@ -204,16 +204,16 @@ class Preference extends Component {
           />
         </View>
         <View style={styles.aboutContainer}>
-          <WeatherIcon name="information-outline" size={17} color="white" />
+          <WeatherIcon name="information-outline" size={17} color="#263144" />
           <Text style={styles.aboutText}>ABOUT</Text>
         </View>    
-          <View style={styles.aboutContentContainer}>
-            <Text style={styles.aboutContent}>Version: 1.9.1 Develop</Text>
-            <Text style={styles.aboutContent}>Authors: Group 20 - UI Design 2019 Course</Text>
-            <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>
-            <Text style={styles.aboutContent}>News Source: VOV.vn</Text>
-          </View>
-          </ScrollView>
+        <View style={styles.aboutContentContainer}>
+          <Text style={styles.aboutContent}>Version: 1.9.1 Develop</Text>
+          <Text style={styles.aboutContent}>Authors: Group 20 - UI Design 2019 Course</Text>
+          <Text style={styles.aboutContent}>Weather Info: Powered by Dark Sky API</Text>
+          <Text style={styles.aboutContent}>News Source: VOV.vn</Text>
+        </View>
+        </ScrollView>
 
       </View>
     );
@@ -223,7 +223,7 @@ class Preference extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 7
+    paddingHorizontal: 18
   },
   userContainer: {
     padding: 5,
@@ -232,14 +232,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 18,
     marginBottom: 20,
-    marginTop: 20,
+    marginTop: 40,
+    elevation: 5,
+    marginHorizontal: 5,
   },
   userInfo: {
     display: 'flex',
     flexDirection: 'row',
-    height: '100%'
+    height: '100%',
+    padding: 20
   },
   avatar: {
     width: '42%',
@@ -251,17 +254,18 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   email: {
-    // textAlign: 'center'
-    overflow: 'hidden'
+    overflow: 'hidden',
+    fontSize: 12,
+    color: '#263144'
   },
   username: {
-    // textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#263144'
   },
   setting: {
     textAlign: 'center',
-    color: 'white',
+    color: '#263144',
     fontSize: 16,
     marginLeft: 4
   },  
@@ -270,11 +274,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',  
     alignItems: 'center',
-    paddingHorizontal: 40,
     paddingTop: 20
   },
   settingLabel: {
-    color: 'white',
+    color: '#263144',
     fontSize: 16,
     marginLeft: 6
   },
@@ -286,8 +289,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderTopColor: 'white',
+    borderTopColor: '#ced4e7',
     borderTopWidth: 1,
     paddingTop: 20
   },
@@ -301,22 +303,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderTopColor: 'white',
+    borderTopColor: '#ced4e7',
     borderTopWidth: 1,
     paddingTop: 15,
     marginTop: 20
   },
   aboutText: {
-    color: 'white',
+    color: '#263144',
     fontSize: 16,
     marginLeft: 3
   },
   signOut: {
-    width: '90%',
-    alignSelf: 'center',
-    backgroundColor: '#44329B',
-    height: 30,
+    width: '100%',
+    backgroundColor: '#ff5253',
+    height: 32,
     borderRadius: 5,
     justifyContent: 'center'
   },
@@ -326,13 +326,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   aboutContentContainer: {
-    marginTop: 20,
+    marginTop: 10,
     justifyContent: 'center',
-    padding: 10,
-    alignSelf: 'center'
   },
   aboutContent: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5
   },
   switchContainer: {

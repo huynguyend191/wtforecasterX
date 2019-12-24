@@ -30,22 +30,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    // backgroundColor: 'rgba(255, 255, 255, 0.6)',
-    backgroundColor: 'white',
-    padding: 5,
+    backgroundColor: '#ffffff',
+    padding: 20,
     alignItems: 'center',
-    marginBottom: 5,
-    // borderRadius: 10,
-    height: 140
+    marginBottom: 10,
+    borderRadius: 10,
+    height: 140,
+    elevation: 5,
+    marginHorizontal: 2
   },
   thumbnail: {
     width: '40%',
-    height: '80%'
+    height: '96%'
   },
   summary: {
     flexWrap: 'wrap',
     width: '60%',
-    padding: 5
+    padding: 5,
+    color: '#263144'
   }
 })
 

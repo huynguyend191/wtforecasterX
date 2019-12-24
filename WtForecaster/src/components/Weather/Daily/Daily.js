@@ -89,15 +89,15 @@ class Daily extends Component {
               </View>  
               <VictoryChart>
                 <Defs>
-                <LinearGradient id="gradientStroke"
-                  x1="0%"
-                  x2="0%"
-                  y1="0%"
-                  y2="100%"
-                >
-                  <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
-                  <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
-                </LinearGradient>
+                  <LinearGradient id="gradientStroke"
+                    x1="0%"
+                    x2="0%"
+                    y1="0%"
+                    y2="100%"
+                  >
+                    <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
+                    <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
+                  </LinearGradient>
                 </Defs>
                 <VictoryArea
                   style={{

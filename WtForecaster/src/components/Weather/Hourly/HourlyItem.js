@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#ffffff',
+    borderBottomColor: '#ced4e7',
     paddingBottom: 20,
     marginBottom: 20
   },
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   summaryContainer: {
     borderTopWidth: 1,
-    borderTopColor: '#ffffff',
+    borderTopColor: '#ced4e7',
     marginTop: 5,
     paddingTop: 15
   },
