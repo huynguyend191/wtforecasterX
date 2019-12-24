@@ -43,7 +43,7 @@ class PlaceItem extends Component {
             }
           />
           <View style={styles.addCmtButton}>
-            <Button title="ADD COMMENT" color="#4c5bd5" onPress={() => this.addComment(place)} />
+            <Button title="ADD COMMENT" color='#516dff' onPress={() => this.addComment(place)} />
           </View>
 
         </View>
@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   addCmtButton: {
-    width: 200,
-    borderRadius: 3,
+    width: 180,
+    borderRadius: 10,
     alignSelf: 'center',
     marginTop: 10
   }

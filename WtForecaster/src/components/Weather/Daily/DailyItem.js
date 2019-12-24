@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   tempMax: {
     color: '#263144',
     fontSize: 48,
+    marginRight: 10
   },
   tempMin: {
     color: '#ced4e7',
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
   tempContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'flex-start'
   },
   info: {
     width: 147

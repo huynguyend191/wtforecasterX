@@ -252,9 +252,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   email: {
-    overflow: 'hidden',
     fontSize: 12,
-    color: '#263144'
+    color: '#263144',
+    width: '100%',
   },
   username: {
     fontSize: 20,

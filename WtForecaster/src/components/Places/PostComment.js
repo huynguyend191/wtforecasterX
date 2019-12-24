@@ -95,7 +95,7 @@ class PostComment extends Component {
         <View style={styles.submit}>
             <Button 
               title="SUBMIT" 
-              color="#4c5bd5" 
+              color='#516dff'
               onPress={this.submit}
               disabled={!this.state.comment.trim().length > 0}
               />
@@ -104,11 +104,11 @@ class PostComment extends Component {
     }
     let commentSection = (
       <View>
-        <Text style={{marginBottom: 10}}>Sign in with Google to comment!</Text>
+        <Text style={{marginBottom: 10, color: "##263144", fontSize: 16}}>Please sign in with Google to comment</Text>
         <Button 
           onPress={this.signIn} title="Sign In" 
           disabled={this.state.signInLoading} 
-          color="#4c5bd5" 
+          color='#516dff'
         />
       </View>
     )
@@ -120,7 +120,7 @@ class PostComment extends Component {
             showRating={false}
             defaultRating={this.state.rating}
             onFinishRating={this.finishRating}
-            size={25}
+            size={20}
           />
           <TextInput
             placeholder="Please write your review here..."
@@ -145,30 +145,35 @@ class PostComment extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
-    width: 300,
+    height: 220,
+    width: 320,
     marginHorizontal: 10, 
-    padding: 10,
+    padding: 20,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#f5f6f6'
   },
   input: {
     marginTop: 3,
     backgroundColor: 'white',
-    borderRadius: 5,
+    borderRadius: 10,
     width: 280,
-    borderWidth: 1
+    borderWidth: 1,
+    borderColor: '#ced4e7',
+    padding: 10,
+    textAlignVertical: 'top'
   },
   placeName: {
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 3
+    marginBottom: 3,
+    color: '#263144',
+    fontWeight: 'bold'
   },
   submit: {
-    marginTop: 5,
-    width: 100,
+    marginTop: 10,
+    width: 280,
     alignSelf: 'center'
   }
 });
