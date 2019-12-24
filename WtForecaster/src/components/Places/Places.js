@@ -103,7 +103,7 @@ class Places extends Component {
       displayPlace = (
         <View style={styles.loading}>
           <Text style={styles.loadingText}>Getting beautiful places...</Text>
-          <ActivityIndicator size="large" color="white" />
+          <ActivityIndicator size="large" color="#263144" />
         </View>
       )
       if (!this.state.loadingPlace && this.state.places) {
@@ -111,7 +111,7 @@ class Places extends Component {
           displayPlace = (
             <View>
               <View style={styles.locationContainer}>
-              <Icon name="map-marker" size={19} color="white" />
+              <Icon name="map-marker" size={19} color="#263144" />
               <Text style={styles.location}>{this.props.currentCity}, {this.props.currentAddress.split(" ").pop()}</Text>
             </View>  
             <FlatList 
@@ -133,7 +133,7 @@ class Places extends Component {
           displayPlace = (
             <View style={styles.error}>
               <Text style={styles.errorMsg}>Sorry, we cannot find any place </Text>
-              <Icon name="emoticon-sad-outline" color="white" size={30} />
+              <Icon name="emoticon-sad-outline" color="#263144" size={30} />
             </View>
           )
         }
@@ -142,7 +142,7 @@ class Places extends Component {
         displayPlace=(
           <View style={styles.error}>
             <Text style={styles.errorMsg}>Cannot get weather info, please refresh</Text>
-            <Icon name="emoticon-sad-outline" color="white" size={30} />
+            <Icon name="emoticon-sad-outline" color="#263144" size={30} />
           </View>
         ) 
     }
@@ -183,9 +183,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 10
   },
   loadingText: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5
   },
   error: {
@@ -199,14 +200,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   errorMsg: {
-    color: 'white',
+    color: '#263144',
     marginBottom: 5,
     fontSize: 16
   },
   location: {
-    color: 'white',
-    fontSize: 18,
-    marginLeft: 3
+    color: '#263144',
+    fontSize: 20,
+    marginLeft: 3,
+    fontWeight: 'bold'
   },
   locationContainer: {
     height: 25,

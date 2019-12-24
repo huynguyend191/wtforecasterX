@@ -50,6 +50,7 @@ router.get('/Current', (req, res, next) => {
     getForecast(longitude, latitude, unit, ["minutely", "hourly", "daily", "alerts", "flags"])
     .then(result => {
         console.log(result.timezone)
+        console.log(convertWeatherData(result.currently).current)
         res.send({
             weatherInfor: {
                 timezone: result.timezone,

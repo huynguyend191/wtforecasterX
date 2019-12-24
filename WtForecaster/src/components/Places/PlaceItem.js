@@ -32,7 +32,7 @@ class PlaceItem extends Component {
       expandSection = (
         <View styles={styles.expandSection}>
           <Text style={styles.description}>Description</Text>
-          <Text>{place.description}</Text>
+          <Text style={styles.descriptionContent}>{place.description}</Text>
           <Text style={styles.description}>Comments</Text>
           <FlatList
             extraData={this.props.email}
@@ -67,7 +67,7 @@ class PlaceItem extends Component {
                 isDisabled={true}
               />
               <View style={styles.commentCount}>
-                <Icon name="comment-account-outline" size={20} />              
+                <Icon name="comment-account-outline" size={20} color="#263144" />              
                 <Text>{place.peopleRated}</Text>
               </View>
             </View>
@@ -81,13 +81,16 @@ class PlaceItem extends Component {
 
 const styles = StyleSheet.create({
   placeItem: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    paddingHorizontal: 5,
+    backgroundColor: '#f7f7f7',
+    paddingHorizontal: 10,
     paddingVertical: 10,
     alignItems: 'center',
-    marginTop: 15,
-    borderRadius: 10,
-    width: '100%',
+    marginTop: 10,
+    borderRadius: 18,
+    width: '97%',
+    elevation: 5,
+    marginHorizontal: 5,
+    marginBottom: 5
   },
   mainDisplay: {
     display: 'flex',
@@ -96,34 +99,41 @@ const styles = StyleSheet.create({
     marginHorizontal: 5
   },
   image: {
-    width: '30%',
+    width: 90,
+    height: 90
   },
   title: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '70%'
+    width: '70%',
+    marginLeft: 10,
+    alignItems: 'flex-start'
   },
   placeName: {
     fontWeight: 'bold',
-    fontSize: 20,
-    marginBottom: 10
+    fontSize: 18,
+    color: '#263144',
   },
   commentCount: {
     paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',
     alignSelf: 'flex-end',
-    marginTop: 5
+    color: '#263144',
   },
   description: {
-    fontSize: 16,
+    fontSize: 14,
     marginVertical: 3,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: '500',
+    padding: 5,
+    color: '#263144',
+  },
+  descriptionContent: {
+    color: '#263144',
+    textAlign: 'justify',
     padding: 5
   },
   address: {
-    textAlign: 'center'
+    color: '#263144',
+    fontSize: 12
   },
   expandSection: {
     alignItems: 'center'

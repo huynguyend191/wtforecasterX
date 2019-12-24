@@ -250,8 +250,6 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 5,
     borderRadius: 10,
-    borderColor: 'blue',
-    borderWidth: 1
   },
   email: {
     overflow: 'hidden',

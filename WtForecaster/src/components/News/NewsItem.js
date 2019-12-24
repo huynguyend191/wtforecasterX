@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   newsItem: {
     display: 'flex',
     flexDirection: 'row',
-    width: '100%',
+    width: '99%',
     justifyContent: 'space-between',
     backgroundColor: '#ffffff',
     padding: 20,
