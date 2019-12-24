@@ -6,9 +6,9 @@ import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import weatherIconName from '../../../utils/weatherIconName';
 import HourlyItem from './HourlyItem';
 import { convertTemp, convertWindSpeed, convertTimeFormat } from '../../../utils/convertUnit';
-import { VictoryLine, VictoryChart, VictoryAxis } from 'victory-native';
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import {getHourlyData, getHourlyLabel} from '../../../utils/getChartData';
-
+import { Defs, LinearGradient, Stop } from 'react-native-svg';
 class Hourly extends Component {
   componentDidMount() {
     this.onFetchHourlyWeather();
@@ -84,22 +84,33 @@ class Hourly extends Component {
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>   
               <VictoryChart>
-                <VictoryLine
+                <Defs>
+                  <LinearGradient id="gradientStroke"
+                    x1="0%"
+                    x2="0%"
+                    y1="0%"
+                    y2="100%"
+                  >
+                    <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
+                    <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
+                  </LinearGradient>
+                </Defs>
+                <VictoryArea
                   style={{
-                    data: { stroke: "#ea8655", color: "#ea8655" },
+                    data: { stroke: "#1E93FA",color: "#263144", fill: "url(#gradientStroke)"},
                   }}
                   data={chartData}
                   categories={chartLabel}
                 />
                 <VictoryAxis
                   style={{
-                    axis: {stroke: "#263144"},
+                    axis: {stroke: "none"},
                     tickLabels: {fontSize: 10, fill: "#263144"},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
-                    axis: {stroke: "#263144"},
+                    axis: {stroke: "none"},
                     tickLabels: {fontSize: 10, fill: "#263144"}
                   }}
                 />

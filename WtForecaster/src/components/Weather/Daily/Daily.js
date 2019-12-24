@@ -7,7 +7,8 @@ import weatherIconName from '../../../utils/weatherIconName';
 import DailyItem from './DailyItem';
 import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import { VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
-import {getDailyDataMax, getDailyDataMin, getDailyLabel} from '../../../utils/getChartData';
+import { getDailyDataMax, getDailyDataMin, getDailyLabel } from '../../../utils/getChartData';
+import { Defs, LinearGradient, Stop } from 'react-native-svg';
 
 class Daily extends Component {
   componentDidMount() {
@@ -87,28 +88,39 @@ class Daily extends Component {
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>  
               <VictoryChart>
+                <Defs>
+                <LinearGradient id="gradientStroke"
+                  x1="0%"
+                  x2="0%"
+                  y1="0%"
+                  y2="100%"
+                >
+                  <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
+                  <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
+                </LinearGradient>
+                </Defs>
                 <VictoryArea
                   style={{
-                    data: { stroke: "#C3DFEB", color: "#263144", fill: "#4c9dd5"}, 
+                    data: { stroke: "#ea8655", color: "#263144", fill: '#f5f6f6'}, 
                   }}
                   categories={chartLabel}
                   data={maxTempData}
                 />
                  <VictoryArea
                   style={{
-                    data: { color: "#263144", fill: "#C3DFEB"},
+                    data: { stroke: "#1E93FA",color: "#263144", fill: "url(#gradientStroke)"},
                   }}
                   data={minTempData}
                 />
                 <VictoryAxis
                   style={{
-                    axis: {stroke: "#263144"},
+                    axis: {stroke: "none"},
                     tickLabels: {fontSize: 10, fill: "#263144"},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
-                    axis: {stroke: "#263144"},
+                    axis: {stroke: "none"},
                     tickLabels: {fontSize: 10, fill: "#263144"}
                   }}
                 />
