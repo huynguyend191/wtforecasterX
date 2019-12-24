@@ -139,7 +139,7 @@ class Daily extends Component {
             style={styles.weather}
           >
             <View>
-              <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.error}>Error connection. Please try again</Text>
             </View>
           </ScrollView>
           

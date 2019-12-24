@@ -9,7 +9,8 @@ const initialState = {
   loadingHourlyWeather: false,
   timeUnit: 'C',
   speedUnit: 'mph',
-  timeFormat: '24h'
+  timeFormat: '24h',
+  theme: 'light'
 }
 
 const reducer = ((state = initialState, action) => {
@@ -79,12 +80,18 @@ const reducer = ((state = initialState, action) => {
         ...state,
         speedUnit: action.config.speedUnit,
         tempUnit: action.config.tempUnit,
-        timeFormat: action.config.timeFormat
+        timeFormat: action.config.timeFormat,
+        theme: action.config.theme
       }
     case actionTypes.CHANGE_TIME_FORMAT:
       return {
         ...state,
         timeFormat: action.format
+      }
+    case actionTypes.CHANGE_THEME: 
+      return {
+        ...state,
+        theme: action.theme
       }
     default:
       return state;

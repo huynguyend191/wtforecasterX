@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image, AsyncStorage, ScrollView} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import WeatherIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import SettingIcon from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
-import { changeTempUnit, changeSpeedUnit, changeTimeFormat } from '../../store/actions';
+import { changeTempUnit, changeSpeedUnit, changeTimeFormat, changeTheme } from '../../store/actions';
 import SwitchSelector from "react-native-switch-selector";
 
 class Preference extends Component {
@@ -31,10 +32,10 @@ class Preference extends Component {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (f.e. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        alert('Something went wrong, please try again');
+        alert('Error connection, please try again');
       // play services not available or outdated
       } else {
-        alert('Something went wrong, please try again');
+        alert('Error connection, please try again');
         // some other error happened
       }
     }
@@ -90,6 +91,15 @@ class Preference extends Component {
       console.log(error);
     }
   }
+  changeTheme = async (value) => {
+    try {
+      let theme = value === 'on' ? 'dark' : 'light';
+      this.props.changeTheme(theme);
+      await AsyncStorage.setItem("theme", theme);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   render() {
     const tempUnits = [
       { label: '°C', value: 'C' },
@@ -102,6 +112,10 @@ class Preference extends Component {
     const timeFormats = [
       {label: '24:00', value: '24h'},
       {label: 'AM', value: '12h'}
+    ];
+    const darkOptions = [
+      {label: 'OFF', value: 'off'},
+      {label: 'ON', value: 'on'}
     ]
     let userProfile = (
       <View style={styles.userContainer}>
@@ -203,6 +217,26 @@ class Preference extends Component {
             style={styles.switchContainer}
           />
         </View>
+          <View style={styles.settingContent}>
+            <View style={styles.settingDisplay}>
+              <SettingIcon name="moon" size={19} color="#263144" />
+              <Text style={styles.settingLabel}>Dark Theme</Text>
+            </View>
+
+            <SwitchSelector
+              onPress={value => this.changeTheme(value)}
+              borderRadius={2}
+              initial={this.props.theme === 'light' ? 0 : 1}
+              buttonColor={'#51b374'}
+              animationDuration={50}
+              hasPadding={false}
+              height={25}
+              options={darkOptions}
+              selectedColor={"#fff"}
+              textColor={"#000"}
+              style={styles.switchContainer}
+            />
+          </View>
         <View style={styles.aboutContainer}>
           <WeatherIcon name="information-outline" size={17} color="#263144" />
           <Text style={styles.aboutText}>ABOUT</Text>
@@ -341,7 +375,8 @@ const mapDispatchToProps = dispatch => {
   return {
     changeTempUnit: (unit) => dispatch(changeTempUnit(unit)),
     changeSpeedUnit: (unit) => dispatch(changeSpeedUnit(unit)),
-    changeTimeFormat: (format) => dispatch(changeTimeFormat(format))
+    changeTimeFormat: (format) => dispatch(changeTimeFormat(format)),
+    changeTheme: (theme) => dispatch(changeTheme(theme))
   }
 }
 
@@ -349,7 +384,8 @@ const mapStateToProps = state => {
   return {
     tempUnit: state.weatherReducer.tempUnit,
     speedUnit: state.weatherReducer.speedUnit,
-    timeFormat: state.weatherReducer.timeFormat
+    timeFormat: state.weatherReducer.timeFormat,
+    theme: state.weatherReducer.theme
   }
 }
 

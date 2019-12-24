@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     paddingLeft: 10,
     paddingVertical: 0,
-    height: 40
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ced4e7'
   }
 });
 

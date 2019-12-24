@@ -30,10 +30,10 @@ class PostComment extends Component {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (f.e. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        alert('Something went wrong, please try again');
+        alert('Error connection, please try again');
       // play services not available or outdated
       } else {
-        alert('Something went wrong, please try again');
+        alert('Error connection, please try again');
         // some other error happened
       }
     }
@@ -89,7 +89,7 @@ class PostComment extends Component {
   
 
   render() {
-    let submit = <ActivityIndicator size="large" color="#4c5bd5"  />
+    let submit = <ActivityIndicator size="large" color='#263144'  />
     if (!this.state.isSubmitting) {
       submit = (
         <TouchableOpacity onPress={() => this.submit()} disabled={!this.state.comment.trim().length > 0}>

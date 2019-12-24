@@ -131,7 +131,7 @@ class Hourly extends Component {
             style={styles.errorContainer}
           >
             <View>
-              <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.error}>Error connection. Please try again</Text>
             </View>
           </ScrollView>
         )

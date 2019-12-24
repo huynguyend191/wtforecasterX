@@ -6,6 +6,7 @@ export {
   fetchCurrentWeather,
   changeTempUnit,
   changeSpeedUnit,
+  changeTheme,
   initConfig
 } from './actionCreator/currentWeather';
 

@@ -46,7 +46,12 @@ export const changeSpeedUnit = (unit) => {
     unit
   }
 }
-
+export const changeTheme = (theme) => {
+  return {
+    type: actionTypes.CHANGE_THEME,
+    theme
+  }
+}
 export const initConfig = (config) => {
   return {
     type: actionTypes.INIT_CONFIG,
