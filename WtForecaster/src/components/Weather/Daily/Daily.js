@@ -9,6 +9,7 @@ import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import { VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import { getDailyDataMax, getDailyDataMin, getDailyLabel } from '../../../utils/getChartData';
 import { Defs, LinearGradient, Stop } from 'react-native-svg';
+import darkTheme from '../../../utils/constants';
 
 class Daily extends Component {
   componentDidMount() {
@@ -27,10 +28,14 @@ class Daily extends Component {
     
   }
   render() {
+    let styles = this.props.theme === 'light' ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
+    let stopColor = this.props.theme === 'light' ? '#1E93FA' : darkTheme.stopColor;
+    console.log("Daily " + this.props.theme)
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
-        <ActivityIndicator size="large" color="#263144" />
+        <ActivityIndicator size="large" color={iconColor} />
       </View>
     );
     if (!this.props.loadingDailyWeather ) {
@@ -51,12 +56,12 @@ class Daily extends Component {
           >
             <View style={styles.dailySummary}>
               <View style={styles.summaryTitleContainer}>
-                <WeatherIcon name="calendar-week" size={19} color="#263144" />
+                <WeatherIcon name="calendar-week" size={19} color={iconColor} />
                 <Text style={styles.summaryTitle}>DAILY SUMMARY</Text>
               </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{dailyWeather.dailySummary}</Text>
-                <WeatherIcon name={weatherIconName[dailyWeather.dailyIcon]} size={50} color="#263144" />
+                <WeatherIcon name={weatherIconName[dailyWeather.dailyIcon]} size={50} color={iconColor} />
               </View>
             </View>
             <FlatList 
@@ -64,7 +69,7 @@ class Daily extends Component {
               data={dailyWeather.dailyForecast}
               keyExtractor={(item, index) => item.date}
               // showsHorizontalScrollIndicator={false}
-              indicatorStyle='#263144'
+              indicatorStyle={iconColor}
               horizontal
               renderItem={({item}) => 
                 <DailyItem 
@@ -84,7 +89,7 @@ class Daily extends Component {
             />
             <View style={styles.container} pointerEvents='none'>
               <View style={styles.chartNameContainer}>
-                <WeatherIcon name="chart-areaspline" size={17} color="#263144" />
+                <WeatherIcon name="chart-areaspline" size={17} color={iconColor} />
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>  
               <VictoryChart>
@@ -95,33 +100,33 @@ class Daily extends Component {
                     y1="0%"
                     y2="100%"
                   >
-                    <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
-                    <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
+                    <Stop offset="0%" stopColor={stopColor} stopOpacity="0.5" />
+                    <Stop offset="70%" stopColor={stopColor} stopOpacity="0.1" />
                   </LinearGradient>
                 </Defs>
                 <VictoryArea
                   style={{
-                    data: { stroke: "#ea8655", color: "#263144", fill: '#f5f6f6'}, 
+                    data: { stroke: "#ea8655", color: iconColor, fill: this.props.theme === 'light' ? '#f5f6f6' : darkTheme.backgroundColor}, 
                   }}
                   categories={chartLabel}
                   data={maxTempData}
                 />
                  <VictoryArea
                   style={{
-                    data: { stroke: "#1E93FA",color: "#263144", fill: "url(#gradientStroke)"},
+                    data: { stroke: {stopColor},color: iconColor, fill: "url(#gradientStroke)"},
                   }}
                   data={minTempData}
                 />
                 <VictoryAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: "#263144"},
+                    tickLabels: {fontSize: 10, fill: iconColor},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: "#263144"}
+                    tickLabels: {fontSize: 10, fill: iconColor}
                   }}
                 />
               </VictoryChart>
@@ -159,7 +164,8 @@ const mapStateToProps = state => {
     dailyWeather: state.weatherReducer.dailyWeather,
     loadingDailyWeather: state.weatherReducer.loadingDailyWeather,
     tempUnit: state.weatherReducer.tempUnit,
-    speedUnit: state.weatherReducer.speedUnit
+    speedUnit: state.weatherReducer.speedUnit,
+    theme: state.weatherReducer.theme
   }
 }
 
@@ -169,7 +175,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   weatherContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -243,4 +249,77 @@ const styles = StyleSheet.create({
   }
 });
 
+const darkStyles = StyleSheet.create({
+  weatherContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 20
+  },
+  weather: {
+    flex: 1,
+  },
+  dailySummary: {
+    marginVertical: 15,
+    width: '100%',
+    flex: 1,
+    display: 'flex',
+    paddingVertical: 15,
+    paddingHorizontal: 10
+  },
+  summaryTitle: {
+    color: darkTheme.textColor,
+    fontSize: 18,
+    textAlign: 'center',
+    marginLeft: 4
+  },
+  summaryContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  summary: {
+    color: darkTheme.textColor,
+    flexWrap: 'wrap',
+    width: '80%',
+  },
+  error: {
+    color: darkTheme.textColor,
+    fontSize: 18,
+    marginTop: 250
+  },
+  loadingText: {
+    color: darkTheme.textColor,
+    marginBottom: 5
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    marginBottom: 20,
+    marginTop: 5
+  },
+  summaryTitleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  chartName: {
+    textAlign: 'center',
+    color: darkTheme.textColor,
+    fontSize: 16,
+    marginLeft: 3
+  },
+  chartNameContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
+  }
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Daily);

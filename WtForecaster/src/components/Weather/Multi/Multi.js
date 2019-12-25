@@ -3,6 +3,8 @@ import {StyleSheet, Text, View, FlatList, Modal, TouchableWithoutFeedback, Touch
 import SearchCity from './SearchCity';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CityWeather from './CityWeather';
+import { connect } from 'react-redux'
+import darkTheme from '../../../utils/constants';
 
 class Multi extends Component {
   state = {
@@ -73,6 +75,8 @@ class Multi extends Component {
 
   render() {
     let displayWeatherInfo = null;
+    let styles = this.props.theme === 'light' ? lightStyles : darkStyles;
+
     if (!this.state.loading) {
       if (this.state.cities.length === 0) {
         displayWeatherInfo = <Text style={styles.noLocationText}>No location added</Text>
@@ -130,7 +134,12 @@ class Multi extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const mapStateToProps = state => {
+  return {
+    theme: state.weatherReducer.theme
+  }
+}
+const lightStyles = StyleSheet.create({
   container: {
     paddingTop: 20,
     paddingHorizontal: 20,
@@ -168,6 +177,43 @@ const styles = StyleSheet.create({
     marginTop: '60%'
   }
 });
+const darkStyles = StyleSheet.create({
+  container: {
+    paddingTop: 20,
+    paddingHorizontal: 20,
+    flex: 1,
+  },
+  modalContent: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00000080'
+  },
+  addLocation: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 139,
+    padding: 5,
+    borderColor: 'white',
+    borderWidth: 1,
+    alignSelf: 'flex-end',
+    borderRadius: 10,
+    marginBottom: 20,
+    backgroundColor: darkTheme.backgroundColor,
+    justifyContent: 'center'
+  },
+  addLocationText: {
+    color: 'white',
+    marginLeft: 5
+  },
+  noLocationText: {
+    color: '#263144',
+    fontSize: 18,
+    alignSelf: 'center',
+    marginTop: '60%'
+  }
+});
 
-
-export default Multi;
+export default connect(mapStateToProps, null)(Multi);

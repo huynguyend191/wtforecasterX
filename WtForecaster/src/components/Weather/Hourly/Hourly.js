@@ -9,6 +9,7 @@ import { convertTemp, convertWindSpeed, convertTimeFormat } from '../../../utils
 import { VictoryLine, VictoryChart, VictoryAxis, VictoryArea } from 'victory-native';
 import {getHourlyData, getHourlyLabel} from '../../../utils/getChartData';
 import { Defs, LinearGradient, Stop } from 'react-native-svg';
+import darkTheme from '../../../utils/constants';
 class Hourly extends Component {
   componentDidMount() {
     this.onFetchHourlyWeather();
@@ -25,11 +26,13 @@ class Hourly extends Component {
     })
   }
   render() {
-    console.log("render " + this.props.timeFormat)
+    let styles = this.props.theme === 'light' ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
+    let stopColor = this.props.theme === 'light' ? '#1E93FA' : darkTheme.stopColor;
     let displayWeatherInfo = (
       <View>
         <Text style={styles.loadingText}>Fetching weather...</Text>
-        <ActivityIndicator size="large" color="#263144" />
+        <ActivityIndicator size="large" color={iconColor} />
       </View>
     );
     if (!this.props.loadingHourlyWeather ) {
@@ -49,12 +52,12 @@ class Hourly extends Component {
           >
             <View style={styles.hourlySummary}>
               <View style={styles.summaryTitleContainer}>
-                <WeatherIcon name="clock-outline" size={19} color="#263144" />
+                <WeatherIcon name="clock-outline" size={19} color={iconColor} />
                 <Text style={styles.summaryTitle}>HOURLY SUMMARY</Text>
               </View>    
               <View style={styles.summaryContent}>
                 <Text style={styles.summary}>{hourlyWeather.hourlySummary}</Text>
-                <WeatherIcon name={weatherIconName[hourlyWeather.hourlyIcon]} size={50} color="#263144" />
+                <WeatherIcon name={weatherIconName[hourlyWeather.hourlyIcon]} size={50} color={iconColor} />
               </View>
             </View>
             <FlatList 
@@ -62,7 +65,7 @@ class Hourly extends Component {
               horizontal
               data={hourlyWeather.hourlyForecast.filter((a,i)=>i%2===0)} //take every 2 hour
               keyExtractor={(item, index) => item.time}
-              indicatorStyle="#263144"
+              indicatorStyle={iconColor}
               renderItem={({item}) => 
                 <HourlyItem 
                   time={convertTimeFormat(item.time, this.props.timeFormat)}
@@ -80,7 +83,7 @@ class Hourly extends Component {
             />
             <View style={styles.container} pointerEvents='none'>
               <View style={styles.chartNameContainer}>
-                <WeatherIcon name="chart-line" size={17} color="#263144" />
+                <WeatherIcon name="chart-line" size={17} color={iconColor} />
                 <Text style={styles.chartName}>Temperature Chart</Text>
               </View>   
               <VictoryChart>
@@ -91,13 +94,13 @@ class Hourly extends Component {
                     y1="0%"
                     y2="100%"
                   >
-                    <Stop offset="0%" stopColor="#1E93FA" stopOpacity="0.5" />
-                    <Stop offset="70%" stopColor="#1E93FA" stopOpacity="0.1" />
+                    <Stop offset="0%" stopColor={stopColor} stopOpacity="0.5" />
+                    <Stop offset="70%" stopColor={stopColor} stopOpacity="0.1" />
                   </LinearGradient>
                 </Defs>
                 <VictoryArea
                   style={{
-                    data: { stroke: "#1E93FA",color: "#263144", fill: "url(#gradientStroke)"},
+                    data: { stroke: {stopColor},color: {iconColor}, fill: "url(#gradientStroke)"},
                   }}
                   data={chartData}
                   categories={chartLabel}
@@ -105,13 +108,13 @@ class Hourly extends Component {
                 <VictoryAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: "#263144"},
+                    tickLabels: {fontSize: 10, fill: {iconColor}},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: "#263144"}
+                    tickLabels: {fontSize: 10, fill: {iconColor}}
                   }}
                 />
                 
@@ -152,7 +155,8 @@ const mapStateToProps = state => {
     loadingHourlyWeather: state.weatherReducer.loadingHourlyWeather,
     tempUnit: state.weatherReducer.tempUnit,
     speedUnit: state.weatherReducer.speedUnit,
-    timeFormat: state.weatherReducer.timeFormat
+    timeFormat: state.weatherReducer.timeFormat,
+    theme: state.weatherReducer.theme
   }
 }
 
@@ -162,7 +166,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   weatherContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -235,5 +239,77 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
-
+const darkStyles = StyleSheet.create({
+  weatherContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 20
+  },
+  weather: {
+    flex: 1,
+  },
+  hourlySummary: {
+    marginVertical: 15,
+    width: '100%',
+    flex: 1,
+    display: 'flex',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+  },
+  summaryTitle: {
+    color: darkTheme.textColor,
+    fontSize: 18,
+    textAlign: 'center',
+    marginLeft: 4
+  },
+  summaryContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  summary: {
+    color: darkTheme.textColor,
+    flexWrap: 'wrap',
+    width: '80%',
+  },
+  error: {
+    color: darkTheme.textColor,
+    fontSize: 18,
+    marginTop: 250
+  },
+  loadingText: {
+    color: '#263144',
+    marginBottom: 5
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    marginBottom: 20,
+    marginTop: 18
+  },
+  summaryTitleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  chartName: {
+    textAlign: 'center',
+    color: darkTheme.textColor,
+    fontSize: 16,
+    marginLeft: 3
+  },
+  chartNameContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10
+  }
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Hourly);

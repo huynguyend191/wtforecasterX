@@ -3,7 +3,8 @@ import { View, Text, StyleSheet , Image, Animated, TouchableWithoutFeedback, Fla
 import { AirbnbRating } from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Comment from './Comment';
-
+import { connect } from 'react-redux';
+import darkTheme from '../../utils/constants';
 class PlaceItem extends Component {
   state = {
     scaleValue: new Animated.Value(0.01),
@@ -26,6 +27,8 @@ class PlaceItem extends Component {
   }
  
   render() {
+    let styles = this.props.theme === "light" ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
     const place = this.props.placeInfo;
     let expandSection = null;
     if (this.state.isExpanding) {
@@ -44,7 +47,7 @@ class PlaceItem extends Component {
           />
           <TouchableOpacity onPress={() => this.addComment(place)}>
             <View style={styles.addCmtButton}>
-              <Text style={{color: '#263144', textAlign: 'center', fontWeight: 'bold'}}>ADD COMMENT</Text>
+              <Text style={{color: iconColor, textAlign: 'center', fontWeight: 'bold'}}>ADD COMMENT</Text>
             </View>
           </TouchableOpacity>
          
@@ -70,19 +73,19 @@ class PlaceItem extends Component {
                 isDisabled={true}
               />
               <View style={styles.commentCount}>
-                <Icon name="comment-account-outline" size={20} color="#263144" />              
+                <Icon name="comment-account-outline" size={20} color={iconColor} />              
                 <Text>{place.peopleRated}</Text>
               </View>
             </View>
           </View>
           {expandSection}
         </Animated.View>
-      </TouchableWithoutFeedback >
+      </TouchableWithoutFeedback>
     );
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   placeItem: {
     backgroundColor: '#f7f7f7',
     paddingHorizontal: 10,
@@ -153,5 +156,80 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
-
-export default PlaceItem;
+const darkStyles = StyleSheet.create({
+  placeItem: {
+    backgroundColor: darkTheme.cardColor,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    alignItems: 'center',
+    marginTop: 10,
+    borderRadius: 18,
+    width: '97%',
+    elevation: 5,
+    marginHorizontal: 5,
+    marginBottom: 5
+  },
+  mainDisplay: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 5
+  },
+  image: {
+    width: 90,
+    height: 90
+  },
+  title: {
+    width: '70%',
+    marginLeft: 10,
+    alignItems: 'flex-start'
+  },
+  placeName: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: darkTheme.textColor,
+  },
+  commentCount: {
+    paddingRight: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    color: darkTheme.textColor,
+  },
+  description: {
+    fontSize: 14,
+    marginVertical: 3,
+    fontWeight: '500',
+    padding: 5,
+    color: darkTheme.textColor,
+  },
+  descriptionContent: {
+    color: darkTheme.textColor,
+    textAlign: 'justify',
+    padding: 5
+  },
+  address: {
+    color: darkTheme.textColor,
+    fontSize: 12
+  },
+  expandSection: {
+    alignItems: 'center'
+  },
+  addCmtButton: {
+    width: 180,
+    alignSelf: 'center',
+    marginTop: 10,
+    borderRadius: 20,
+    backgroundColor: darkTheme.cardColor,
+    height: 40,
+    borderWidth: 1,
+    borderColor: darkTheme.textColor,
+    justifyContent: 'center'
+  }
+})
+const mapStateToProps = state => {
+  return {
+    theme: state.weatherReducer.theme
+  }
+}
+export default connect(mapStateToProps,null)(PlaceItem);

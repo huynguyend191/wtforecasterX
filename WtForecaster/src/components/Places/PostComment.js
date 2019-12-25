@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Button, TextInput, ActivityIndicator, TouchableO
 import { GoogleSignin } from 'react-native-google-signin';
 import { AirbnbRating } from 'react-native-ratings';
 import axios from '../../utils/axiosConfig';
+import { connect } from 'react-redux';
 
 class PostComment extends Component {
   state = {

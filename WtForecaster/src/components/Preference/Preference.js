@@ -6,6 +6,7 @@ import SettingIcon from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 import { changeTempUnit, changeSpeedUnit, changeTimeFormat, changeTheme } from '../../store/actions';
 import SwitchSelector from "react-native-switch-selector";
+import darkTheme from '../../utils/constants';
 
 class Preference extends Component {
   state = {
@@ -101,6 +102,9 @@ class Preference extends Component {
     }
   }
   render() {
+    let styles = this.props.theme == 'light' ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
+
     const tempUnits = [
       { label: '°C', value: 'C' },
       { label: '°F', value: 'F'}
@@ -155,12 +159,12 @@ class Preference extends Component {
 
         {userProfile}
         <View style={styles.settingTextContainer}>
-          <WeatherIcon name="settings" size={17} color="#263144" />
+          <WeatherIcon name="settings" size={17} color={iconColor} />
           <Text style={styles.setting}>SETTINGS</Text>
         </View>    
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="thermometer" size={19} color="#263144" />
+            <WeatherIcon name="thermometer" size={19} color={iconColor} />
             <Text style={styles.settingLabel}>Temperature Unit</Text>
           </View>
         
@@ -180,7 +184,7 @@ class Preference extends Component {
         </View>
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="speedometer" size={19} color="#263144" />
+            <WeatherIcon name="speedometer" size={19} color={iconColor} />
             <Text style={styles.settingLabel}>Wind Speed Unit</Text>
           </View>
           <SwitchSelector
@@ -199,7 +203,7 @@ class Preference extends Component {
         </View>
         <View style={styles.settingContent}>
           <View style={styles.settingDisplay}>
-            <WeatherIcon name="timer" size={19} color="#263144" />
+            <WeatherIcon name="timer" size={19} color={iconColor} />
             <Text style={styles.settingLabel}>Time Format</Text>
           </View>
 
@@ -219,7 +223,7 @@ class Preference extends Component {
         </View>
           <View style={styles.settingContent}>
             <View style={styles.settingDisplay}>
-              <SettingIcon name="moon" size={19} color="#263144" />
+              <SettingIcon name="moon" size={19} color={iconColor} />
               <Text style={styles.settingLabel}>Dark Theme</Text>
             </View>
 
@@ -238,7 +242,7 @@ class Preference extends Component {
             />
           </View>
         <View style={styles.aboutContainer}>
-          <WeatherIcon name="information-outline" size={17} color="#263144" />
+          <WeatherIcon name="information-outline" size={17} color={iconColor} />
           <Text style={styles.aboutText}>ABOUT</Text>
         </View>    
         <View style={styles.aboutContentContainer}>
@@ -254,7 +258,7 @@ class Preference extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 18
@@ -367,6 +371,122 @@ const styles = StyleSheet.create({
   },
   switchContainer: {
     marginLeft: 5, 
+    width: '28%',
+  }
+});
+const darkStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 18
+  },
+  userContainer: {
+    padding: 5,
+    backgroundColor: darkTheme.cardColor,
+    height: 160,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 18,
+    marginBottom: 20,
+    marginTop: 40,
+    elevation: 5,
+    marginHorizontal: 5,
+  },
+  userInfo: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '100%',
+    padding: 20
+  },
+  avatar: {
+    width: '42%',
+    height: '100%',
+    marginRight: 5,
+    marginLeft: 5,
+    borderRadius: 10,
+  },
+  email: {
+    fontSize: 12,
+    color: darkTheme.textColor,
+    width: '100%',
+  },
+  username: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: darkTheme.textColor
+  },
+  setting: {
+    textAlign: 'center',
+    color: darkTheme.textColor,
+    fontSize: 16,
+    marginLeft: 4
+  },
+  settingContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 20
+  },
+  settingLabel: {
+    color: darkTheme.textColor,
+    fontSize: 16,
+    marginLeft: 6
+  },
+  settingDisplay: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  settingTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopColor: '#ced4e7',
+    borderTopWidth: 1,
+    paddingTop: 20
+  },
+  userNameArea: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '58%',
+  },
+  aboutContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopColor: '#ced4e7',
+    borderTopWidth: 1,
+    paddingTop: 15,
+    marginTop: 20
+  },
+  aboutText: {
+    color: darkTheme.textColor,
+    fontSize: 16,
+    marginLeft: 3
+  },
+  signOut: {
+    width: '100%',
+    backgroundColor: '#ff5253',
+    height: 32,
+    borderRadius: 5,
+    justifyContent: 'center'
+  },
+  signOutText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  aboutContentContainer: {
+    marginTop: 10,
+    justifyContent: 'center',
+  },
+  aboutContent: {
+    color: darkTheme.textColor,
+    marginBottom: 5
+  },
+  switchContainer: {
+    marginLeft: 5,
     width: '28%',
   }
 });

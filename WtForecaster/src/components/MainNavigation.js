@@ -5,7 +5,7 @@ import Weather from './Weather/Weather';
 import News from './News/News';
 import Places from './Places/Places';
 import Preference from './Preference/Preference';
-
+import {connect} from 'react-redux'
 
 const MainNavigation = createBottomTabNavigator({
   Weather: Weather,

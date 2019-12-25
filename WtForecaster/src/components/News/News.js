@@ -3,6 +3,7 @@ import {StyleSheet, View, ActivityIndicator, FlatList, RefreshControl, Text} fro
 import { connect } from 'react-redux';
 import { fetchNews } from '../../store/actions';
 import NewsItem from './NewsItem';
+import darkTheme from '../../utils/constants';
 
 class News extends Component {
   componentDidMount() {
@@ -12,10 +13,11 @@ class News extends Component {
     this.props.fetchNews();
   }
   render() {
+    let styles = this.props.theme === 'light' ? lightStyles : darkStyles;
     let displayNews = (
       <View>
         <Text style={styles.loadingText}>Fetching news...</Text>
-        <ActivityIndicator size="large" color="#263144" />
+        <ActivityIndicator size="large" color={this.props.theme === 'light' ? "#263144" : darkTheme.textColor} />
       </View>
     )
     if (!this.props.loadingNews) {
@@ -49,7 +51,7 @@ class News extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   newsContainer: {
     display: 'flex',
     justifyContent: 'center',
@@ -63,11 +65,25 @@ const styles = StyleSheet.create({
     marginBottom: 5
   }
 });
-
+const darkStyles = StyleSheet.create({
+  newsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    paddingTop: 26,
+    paddingHorizontal: 14
+  },
+  loadingText: {
+    color: darkTheme.textColor,
+    marginBottom: 5
+  }
+});
 const mapStateToProps = state => {
   return {
     news: state.newsReducer.news,
-    loadingNews: state.newsReducer.loadingNews
+    loadingNews: state.newsReducer.loadingNews,
+    theme: state.weatherReducer.theme
   }
 }
 

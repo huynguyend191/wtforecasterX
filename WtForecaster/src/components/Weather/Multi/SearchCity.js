@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity, AsyncStorage} from 'react-native';
 import cityList from '../../../utils/world_coor.json';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import darkTheme from '../../../utils/constants.js';
+import {connect} from 'react-redux'
 class SearchCity extends Component {
   state = {
     value: "",
@@ -51,6 +52,7 @@ class SearchCity extends Component {
     }
   }
   render() {
+    let styles = this.props.theme == 'light' ? lightStyles : darkStyles;
     return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
@@ -68,7 +70,13 @@ class SearchCity extends Component {
         <FlatList
           keyExtractor={(item, index) => index.toString()}
           data={this.state.data}
-          renderItem={this.renderItem}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => this.selectCity(item)}>
+              <View style={styles.cityContainer}>
+                <Text style={styles.cityName}>{item.city}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
           getItemLayout={(data, index) => (
             {length: 40, offset: 40 * index, index}
           )}
@@ -78,13 +86,16 @@ class SearchCity extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     height: 400,
     width: 320,
     backgroundColor: '#f5f6f6', 
     padding: 20,
     borderRadius: 10
+  },
+  textInput: {
+    width: '100%',
   },
   cityContainer: {
     padding: 2,
@@ -110,6 +121,48 @@ const styles = StyleSheet.create({
     borderColor: '#ced4e7'
   }
 });
+const darkStyles = StyleSheet.create({
+  container: {
+    height: 400,
+    width: 320,
+    backgroundColor: darkTheme.backgroundColor,
+    padding: 20,
+    borderRadius: 10
+  },
+  cityContainer: {
+    padding: 2,
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    height: 40,
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  textInput: {
+    width: '100%',
+    color: 'white'
+  },
+  cityName: {
+    fontSize: 14,
+    color: darkTheme.textColor
+  },
+  searchBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#000000',
+    borderRadius: 18,
+    paddingLeft: 10,
+    paddingVertical: 0,
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ced4e7'
+  }
+});
 
 
-export default SearchCity;
+const mapStateToProps = state => {
+  return {
+    theme: state.weatherReducer.theme
+  }
+}
+export default connect(mapStateToProps,null)(SearchCity);
