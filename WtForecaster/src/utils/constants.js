@@ -1,7 +1,7 @@
 const darkTheme = {
-  backgroundColor: '#121212',
+  backgroundColor: '#0f1d24',
   textColor: '#e1e1e1',
-  cardColor: '#1d1d1d',
+  cardColor: '#162933',
   stopColor: '#bb86fc'
 }
 export default darkTheme;

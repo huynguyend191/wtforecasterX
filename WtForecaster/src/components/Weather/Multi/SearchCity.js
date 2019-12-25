@@ -53,12 +53,14 @@ class SearchCity extends Component {
   }
   render() {
     let styles = this.props.theme == 'light' ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
     return (
       <View style={styles.container}>
         <View style={styles.searchBar}>
           <Icon name="magnify" color="gray" size={19} />
           <TextInput        
-            placeholder="Type city name here"        
+            placeholder="Type city name here"      
+            placeholderTextColor={iconColor}  
             round        
             onChangeText={text => this.searchFilterFunction(text)}
             autoCorrect={false}         
