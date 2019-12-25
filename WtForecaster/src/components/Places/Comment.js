@@ -157,7 +157,7 @@ const darkStyles = StyleSheet.create({
     marginRight: 10
   },
   commentContent: {
-    backgroundColor: darkTheme.cardColor,
+    backgroundColor: 'white',
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 20,
@@ -171,7 +171,7 @@ const darkStyles = StyleSheet.create({
     fontWeight: '700'
   },
   contentText: {
-    color: darkTheme.textColor
+  //   color: darkTheme.textColor
   }
 })
 const mapStateToProps = state => {
