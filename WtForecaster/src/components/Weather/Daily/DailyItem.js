@@ -164,7 +164,7 @@ const darkStyles = StyleSheet.create({
     marginRight: 10
   },
   tempMin: {
-    color: '#ced4e7',
+    color: '#284555',
     fontSize: 48,
   },
   detailContainer: {
