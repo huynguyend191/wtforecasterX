@@ -113,7 +113,7 @@ class Daily extends Component {
                 />
                  <VictoryArea
                   style={{
-                    data: { stroke: {stopColor},color: iconColor, fill: "url(#gradientStroke)"},
+                    data: { stroke: stopColor,color: iconColor, fill: "url(#gradientStroke)"},
                   }}
                   data={minTempData}
                 />

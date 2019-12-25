@@ -4,6 +4,7 @@ import { GoogleSignin } from 'react-native-google-signin';
 import { AirbnbRating } from 'react-native-ratings';
 import axios from '../../utils/axiosConfig';
 import { connect } from 'react-redux';
+import darkTheme from '../../utils/constants';
 
 class PostComment extends Component {
   state = {
@@ -90,7 +91,9 @@ class PostComment extends Component {
   
 
   render() {
-    let submit = <ActivityIndicator size="large" color='#263144'  />
+    let styles = this.props.theme === 'light' ? lightStyles : darkStyles;
+    let iconColor = this.props.theme === "light" ? '#263144' : darkTheme.textColor;
+    let submit = <ActivityIndicator size="large" color={iconColor}  />
     if (!this.state.isSubmitting) {
       submit = (
         <TouchableOpacity onPress={() => this.submit()} disabled={!this.state.comment.trim().length > 0}>
@@ -102,7 +105,7 @@ class PostComment extends Component {
     }
     let commentSection = (
       <View>
-        <Text style={{marginBottom: 10, color: "#263144", fontSize: 16}}>Please sign in with Google to comment</Text>
+        <Text style={{marginBottom: 10, color: {iconColor}, fontSize: 16}}>Please sign in with Google to comment</Text>
         <TouchableOpacity onPress={this.signIn} disabled={this.state.signInLoading} >
           <View style={styles.signInButton}>
             <Text style={{color: 'white', textAlign: 'center', fontWeight: 'bold'}}>SIGN IN</Text>
@@ -123,6 +126,7 @@ class PostComment extends Component {
           />
           <TextInput
             placeholder="Please write your review here..."
+            placeholderTextColor={iconColor}
             multiline={true}
             numberOfLines={4}
             onChangeText={(text) => this.setState({comment: text})}
@@ -142,7 +146,7 @@ class PostComment extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     height: 220,
     width: 320,
@@ -194,5 +198,64 @@ const styles = StyleSheet.create({
   }
 });
 
+const darkStyles = StyleSheet.create({
+  container: {
+    height: 220,
+    width: 320,
+    marginHorizontal: 10, 
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#162933'
+  },
+  input: {
+    marginTop: 3,
+    backgroundColor: '#0e1e26',
+    borderRadius: 10,
+    width: 280,
+    borderWidth: 1,
+    borderColor: '#ced4e7',
+    padding: 10,
+    textAlignVertical: 'top',
+    color: darkTheme.textColor
+  },
+  placeName: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 3,
+    color: darkTheme.textColor,
+    fontWeight: 'bold'
+  },
+  submit: {
+    marginTop: 10,
+    width: 280,
+    alignSelf: 'center',
+    borderRadius: 20,
+    backgroundColor: '#51b374',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'white',
+    justifyContent: 'center'
+  },
+  signInButton: {
+    marginTop: 10,
+    width: 280,
+    alignSelf: 'center',
+    borderRadius: 20,
+    backgroundColor: '#516dff',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'white',
+    justifyContent: 'center'
+  }
+});
 
-export default PostComment;
+
+const mapStateToProps = state => {
+  return {
+    theme: state.weatherReducer.theme
+  }
+}
+
+export default connect(mapStateToProps, null)(PostComment);

@@ -209,7 +209,7 @@ const darkStyles = StyleSheet.create({
     marginLeft: 5
   },
   noLocationText: {
-    color: '#263144',
+    color: 'white',
     fontSize: 18,
     alignSelf: 'center',
     marginTop: '60%'

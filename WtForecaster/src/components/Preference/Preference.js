@@ -142,7 +142,7 @@ class Preference extends Component {
               <View>
                 <Text style={styles.username}>{user.name}</Text>
                 <View style={styles.email}>
-                  <Text>{user.email}</Text>
+                  <Text style={styles.email}>{user.email}</Text>
                 </View>
               </View>
               <TouchableOpacity style={styles.signOut} onPress={this.signOut}>

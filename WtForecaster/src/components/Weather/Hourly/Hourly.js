@@ -100,7 +100,7 @@ class Hourly extends Component {
                 </Defs>
                 <VictoryArea
                   style={{
-                    data: { stroke: {stopColor},color: {iconColor}, fill: "url(#gradientStroke)"},
+                    data: { stroke: stopColor,color: iconColor, fill: "url(#gradientStroke)"},
                   }}
                   data={chartData}
                   categories={chartLabel}
@@ -108,13 +108,13 @@ class Hourly extends Component {
                 <VictoryAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: {iconColor}},
+                    tickLabels: {fontSize: 10, fill: iconColor},
                   }}
                 />
                 <VictoryAxis dependentAxis
                   style={{
                     axis: {stroke: "none"},
-                    tickLabels: {fontSize: 10, fill: {iconColor}}
+                    tickLabels: {fontSize: 10, fill: iconColor}
                   }}
                 />
                 

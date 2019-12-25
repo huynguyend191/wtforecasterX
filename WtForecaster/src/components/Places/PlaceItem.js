@@ -74,7 +74,7 @@ class PlaceItem extends Component {
               />
               <View style={styles.commentCount}>
                 <Icon name="comment-account-outline" size={20} color={iconColor} />              
-                <Text>{place.peopleRated}</Text>
+                <Text style={{color: iconColor}}>{place.peopleRated}</Text>
               </View>
             </View>
           </View>
