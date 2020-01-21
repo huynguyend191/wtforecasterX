@@ -5,11 +5,8 @@ import weatherIconName from '../../../utils/weatherIconName';
 import { connect } from 'react-redux';
 import {convertTemp, convertWindSpeed} from '../../../utils/convertUnit';
 import axios from '../../../utils/axiosConfig';
-<<<<<<< HEAD
 import darkTheme from '../../../utils/constants';
 
-=======
->>>>>>> e463edaee7e45d12806f8c3addf6bdf4343a801e
 class CityWeather extends Component {
   state = {
     scaleValue: new Animated.Value(0.01),
@@ -62,18 +59,9 @@ class CityWeather extends Component {
     let iconColor = this.props.theme === 'light' ? '#263144' : darkTheme.textColor;
     return (
       <Animated.View style={[styles.dailyItem, { opacity: this.state.scaleValue }]}>
-<<<<<<< HEAD
         <View style={{alignSelf: 'flex-end'}}>
           <WeatherIcon name="close" size={16} color={iconColor} onPress={() => this.props.removeCity(this.props.cityIndex)} />
         </View>
-=======
-        <View style={styles.locationContainer}>
-          <WeatherIcon name="map-marker" size={19} color="white" />
-          <Text style={styles.location}>{this.props.city}</Text>
-          <WeatherIcon style={styles.dots} onPress={this.props.onClickRemove} name="trash-can-outline" size={23} color="white" />
-        </View>     
-        <Text style={styles.date}>{weather.date}</Text>
->>>>>>> e463edaee7e45d12806f8c3addf6bdf4343a801e
         <View style={styles.mainDisplay}>
           <WeatherIcon name={weatherIconName[weather.icon]} size={65} color={iconColor} />
           <View style={styles.info}>
@@ -256,7 +244,6 @@ const darkStyles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 3
   },
-<<<<<<< HEAD
   info: {
     width: 147
   },
@@ -265,12 +252,6 @@ const darkStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
-=======
-  dots: {
-    position: 'absolute',
-    right: 0
-  }
->>>>>>> e463edaee7e45d12806f8c3addf6bdf4343a801e
 })
 
 const mapStateToProps = state => {
