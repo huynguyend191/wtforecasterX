@@ -349,6 +349,11 @@ const darkStyles = StyleSheet.create({
     marginTop: 250,
     textAlign: 'center'
   },
+  guide: {
+    color: 'white',
+    fontSize: 14,
+    marginTop: 12
+  },    
   loadingText: {
     color: darkTheme.textColor ,
     marginBottom: 5,

@@ -133,8 +133,14 @@ class Hourly extends Component {
             }
             style={styles.errorContainer}
           >
+<<<<<<< HEAD
             <View>
               <Text style={styles.error}>Error connection. Please try again</Text>
+=======
+            <View style={styles.errorView}>
+              <Text style={styles.error}>Something went wrong</Text>
+              <Text style={styles.guide}>Swipe down to refresh</Text>
+>>>>>>> e463edaee7e45d12806f8c3addf6bdf4343a801e
             </View>
           </ScrollView>
         )
@@ -204,8 +210,13 @@ const lightStyles = StyleSheet.create({
     width: '80%',
   },
   error: {
+<<<<<<< HEAD
     color: '#263144',
     fontSize: 18,
+=======
+    color: 'white',
+    fontSize: 14,
+>>>>>>> e463edaee7e45d12806f8c3addf6bdf4343a801e
     marginTop: 250
   },
   loadingText: {
@@ -310,6 +321,16 @@ const darkStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10
+  },
+  guide: {
+    color: 'white',
+    fontSize: 14,
+    marginTop: 12
+  },    
+  errorView: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Hourly);
