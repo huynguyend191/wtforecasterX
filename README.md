@@ -34,3 +34,7 @@
   cd WtForecaster
   react-native run-android
   ````
+
+## 4. Screenshot
+### a.Light theme
+![Weather](/demo/LightTheme/1)
