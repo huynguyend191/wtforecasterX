@@ -62,13 +62,13 @@ export const getDailyDataMin = (weatherInfo, unit) => {
 
 export const getDailyLabel = (weatherInfo) => {
   return { x: [
-    new Date(weatherInfo[0].date).getDate() + '/' + new Date(weatherInfo[0].date).getMonth(), 
-    new Date(weatherInfo[1].date).getDate() + '/' + new Date(weatherInfo[1].date).getMonth(), 
-    new Date(weatherInfo[2].date).getDate() + '/' + new Date(weatherInfo[2].date).getMonth(), 
-    new Date(weatherInfo[3].date).getDate() + '/' + new Date(weatherInfo[3].date).getMonth(), 
-    new Date(weatherInfo[4].date).getDate() + '/' + new Date(weatherInfo[4].date).getMonth(), 
-    new Date(weatherInfo[5].date).getDate() + '/' + new Date(weatherInfo[5].date).getMonth(), 
-    new Date(weatherInfo[6].date).getDate() + '/' + new Date(weatherInfo[6].date).getMonth(), 
-    new Date(weatherInfo[7].date).getDate() + '/' + new Date(weatherInfo[7].date).getMonth(), 
+    new Date(weatherInfo[0].date).getDate() + '/' + (new Date(weatherInfo[0].date).getMonth() + 1), 
+    new Date(weatherInfo[1].date).getDate() + '/' + (new Date(weatherInfo[1].date).getMonth() + 1), 
+    new Date(weatherInfo[2].date).getDate() + '/' + (new Date(weatherInfo[2].date).getMonth() + 1), 
+    new Date(weatherInfo[3].date).getDate() + '/' + (new Date(weatherInfo[3].date).getMonth() + 1), 
+    new Date(weatherInfo[4].date).getDate() + '/' + (new Date(weatherInfo[4].date).getMonth() + 1), 
+    new Date(weatherInfo[5].date).getDate() + '/' + (new Date(weatherInfo[5].date).getMonth() + 1), 
+    new Date(weatherInfo[6].date).getDate() + '/' + (new Date(weatherInfo[6].date).getMonth() + 1), 
+    new Date(weatherInfo[7].date).getDate() + '/' + (new Date(weatherInfo[7].date).getMonth() + 1), 
   ]};
 }
