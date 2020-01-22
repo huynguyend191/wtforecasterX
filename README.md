@@ -37,4 +37,4 @@
 
 ## 4. Screenshot
 ### a.Light theme
-![Weather](/demo/LightTheme/1)
+!(/demo/LightTheme/1.jpg)
