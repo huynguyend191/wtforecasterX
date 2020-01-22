@@ -37,4 +37,30 @@
 
 ## 4. Screenshot
 ### a.Light theme
-!(/demo/LightTheme/1.jpg)
+![Weather](/demo/LightTheme/1.jpg) 
+![Weather](/demo/LightTheme/2.jpg)
+![Weather](/demo/LightTheme/3.jpg)
+![Weather](/demo/LightTheme/4.jpg)
+![Weather](/demo/LightTheme/5.jpg)
+![Weather](/demo/LightTheme/6.jpg)
+![Weather](/demo/LightTheme/7.jpg)
+![Weather](/demo/LightTheme/8.jpg)
+![Weather](/demo/LightTheme/9.jpg)
+![Weather](/demo/LightTheme/10.jpg)
+![Weather](/demo/LightTheme/11.jpg)
+![Weather](/demo/LightTheme/12.jpg)
+![Weather](/demo/LightTheme/13.jpg)
+![Weather](/demo/LightTheme/14.jpg)
+### b.Dark theme
+![Weather](/demo/DarkTheme/1.jpg) 
+![Weather](/demo/DarkTheme/2.jpg)
+![Weather](/demo/DarkTheme/3.jpg) 
+![Weather](/demo/DarkTheme/4.jpg) 
+![Weather](/demo/DarkTheme/5.jpg) 
+![Weather](/demo/DarkTheme/6.jpg) 
+![Weather](/demo/DarkTheme/7.jpg) 
+![Weather](/demo/DarkTheme/8.jpg) 
+![Weather](/demo/DarkTheme/9.jpg) 
+![Weather](/demo/DarkTheme/10.jpg) 
+![Weather](/demo/DarkTheme/11.jpg) 
+
