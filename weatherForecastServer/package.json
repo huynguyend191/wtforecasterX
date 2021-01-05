@@ -6,7 +6,7 @@
     "start": "node-dev ./bin/www"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cookie-parser": "~1.4.3",
     "dark-sky": "^1.1.5",
     "darksky": "^0.1.2",
