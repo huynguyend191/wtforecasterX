@@ -21,7 +21,7 @@
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "victory-native": "^32.0.2"
+    "victory-native": "^36.6.8"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
