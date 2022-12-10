@@ -11,7 +11,7 @@
     "dark-sky": "^1.1.5",
     "darksky": "^0.1.2",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
+    "express": "~4.17.3",
     "jsdom": "^14.0.0",
     "mongoose": "^5.4.21",
     "morgan": "~1.9.0",
